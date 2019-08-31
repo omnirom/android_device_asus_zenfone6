@@ -80,4 +80,6 @@
     <string name="wake_entry">Wakeup</string>
     <string name="audio_title">Audio</string>
     <string name="asus_audiowizard_entry_title">AudioWizard</string>
+    <string name="swipe_up_to_wake_up_title">Swipe up to wake up</string>
+    <string name="swipe_up_to_wake_up_summary">Swipe up on the screen to wake up your device from idle mode</string>
 </resources>
