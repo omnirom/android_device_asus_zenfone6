@@ -53,6 +53,14 @@ public class Startup extends BroadcastReceiver {
 
             Settings.System.putInt(context.getContentResolver(), "omni_device_setting_imported", 1);
         }
+        boolean gesture_imported = Settings.System.getInt(context.getContentResolver(), "omni_gesture_setting_imported", 0) != 0;
+        if (!gesture_imported) {
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+            boolean enabled = sharedPrefs.getBoolean(GestureSettings.KEY_SWIPEUP_SWITCH, false);
+            Settings.System.putInt(context.getContentResolver(), SwipeUpSwitch.SETTINGS_GESTURE_KEY, enabled ? 1 : 0);
+
+            Settings.System.putInt(context.getContentResolver(), "omni_gesture_setting_imported", 1);
+        }
     }
 
     @Override
@@ -93,6 +101,9 @@ public class Startup extends BroadcastReceiver {
 
         value = Settings.System.getString(context.getContentResolver(), Settings.System.OMNI_BUTTON_EXTRA_KEY_MAPPING);
         restore(getGestureFile(GestureSettings.GESTURE_CONTROL_PATH), value);
+
+        enabled = Settings.System.getInt(context.getContentResolver(), SwipeUpSwitch.SETTINGS_GESTURE_KEY, 0) != 0;
+        restore(SwipeUpSwitch.getFile(), enabled);
 
         enabled = Settings.System.getInt(context.getContentResolver(), GloveModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(GloveModeSwitch.getFile(), enabled);
