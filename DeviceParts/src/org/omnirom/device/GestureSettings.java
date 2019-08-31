@@ -55,6 +55,8 @@ public class GestureSettings extends PreferenceFragment implements
 
     public static final String KEY_PROXI_SWITCH = "proxi";
     public static final String KEY_OFF_SCREEN_GESTURE_FEEDBACK_SWITCH = "off_screen_gesture_feedback";
+    public static final String KEY_SWIPEUP_SWITCH = "swipeup";
+    public static final String KEY_SETTINGS_SWIPEUP_PREFIX = "gesture_setting_";
 
     public static final int KEY_C_ID = 0;
     public static final int KEY_E_ID = 1;
@@ -82,6 +84,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String DEVICE_GESTURE_MAPPING_5 = "device_gesture_mapping_5_0";
     public static final String DEVICE_GESTURE_MAPPING_6 = "device_gesture_mapping_6_0";
 
+    private static TwoStatePreference mSwipeUpSwitch;
     private TwoStatePreference mProxiSwitch;
     private AppSelectListPreference mFPLongPressApp;
     private AppSelectListPreference mLetterCGesture;
@@ -148,6 +151,11 @@ public class GestureSettings extends PreferenceFragment implements
         value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_6);
         mLetterZGesture.setValue(value);
         mLetterZGesture.setOnPreferenceChangeListener(this);
+
+        mSwipeUpSwitch = (TwoStatePreference) findPreference(KEY_SWIPEUP_SWITCH);
+        mSwipeUpSwitch.setEnabled(SwipeUpSwitch.isSupported());
+        mSwipeUpSwitch.setChecked(SwipeUpSwitch.isCurrentlyEnabled(this.getContext()));
+        mSwipeUpSwitch.setOnPreferenceChangeListener(new SwipeUpSwitch(getContext()));
 
         new FetchPackageInformationTask().execute();
     }
