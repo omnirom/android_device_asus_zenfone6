@@ -97,6 +97,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final String DT2W_CONTROL_PATH = "/proc/driver/dclick";
     private static final String GOODIX_CONTROL_PATH = "/sys/devices/platform/soc/soc:goodixfp/proximity_state";
+    private static final String OUTDOOR_MODE_URI = "audio_wizard_outdoor_mode";
 
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
@@ -132,6 +133,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean isOPCameraAvail;
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
+    private boolean mOutdoorMode;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -192,6 +194,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DOUBLE_TAP_TO_WAKE),
                     false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    OUTDOOR_MODE_URI),
+                    false, this);
             update();
             updateDozeSettings();
         }
@@ -218,6 +223,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mDoubleTapToWake = Settings.Secure.getInt(
                     mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 1) == 1;
                     updateDoubleTapToWake();
+            mOutdoorMode = Settings.System.getIntForUser(
+                    mContext.getContentResolver(), OUTDOOR_MODE_URI, 2,
+                    UserHandle.USER_CURRENT) == 1;
         }
     }
 
