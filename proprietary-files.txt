@@ -3,6 +3,7 @@
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
 # Audio
+<<<<<<< HEAD   (97a328 zenfone6: Set fingerprint and versatility props from init)
 system_ext/etc/cdma_call_conf.xml
 system_ext/lib64/libadsprpc_system.so
 system_ext/lib64/libcdsprpc_system.so
@@ -12,6 +13,15 @@ system_ext/lib64/libsdsprpc_system.so
 # Bluetooth
 system_ext/etc/permissions/audiosphere.xml
 -system_ext/framework/audiosphere.jar
+=======
+-app/AudioWizard/AudioWizard.apk;PRESIGNED
+-app/AudioWizardView/AudioWizardView.apk;PRESIGNED
+
+# Bluetooth (aptX)
+-app/aptxals/aptxals.apk
+product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
+product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
+>>>>>>> CHANGE (841f61 zenfone6: Add AudioWizard support)
 
 # Camera
 lib/DataSet/ispDB/ASUS_UNDI.bin

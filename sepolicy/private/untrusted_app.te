@@ -1,0 +1,5 @@
+<<<<<<< HEAD   (97a328 zenfone6: Set fingerprint and versatility props from init)
+=======
+allow untrusted_app persist_camera_prop:file { read open getattr map};
+allow untrusted_app vendor_default_prop:file { read open getattr map};
+>>>>>>> CHANGE (841f61 zenfone6: Add AudioWizard support)

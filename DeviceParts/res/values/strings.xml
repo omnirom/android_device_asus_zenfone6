@@ -88,6 +88,7 @@
     <string name="swipe_up_to_wake_up_title">Swipe up to wake up</string>
     <string name="swipe_up_to_wake_up_summary">Swipe up on the screen to wake up your device from idle mode</string>
 
+<<<<<<< HEAD   (97a328 zenfone6: Set fingerprint and versatility props from init)
     <!-- Display Manager -->
     <string name="display_title">Display</string>
 
@@ -100,4 +101,24 @@
     <string name="camera_retraction_category">Camera retraction</string>
     <string name="calibrate_camera_angle_title">Calibrate camera angle</string>
     <string name="calibrate_camera_angle_summary">When the flip angle of the camera is abnormal, calibrate the camera to restore to its original position</string>
+=======
+    <!-- AudioWizard -->
+    <string name="audio_title">Audio Settings</string>
+    <string name="audio_summary">Audio Settings of the device</string>
+    <string name="asus_audiowizard_entry_title">AudioWizard</string>
+    <string name="audiowizard_summary_headset_effect_and_mode">DTS : %s, %s</string>
+    <string name="outdoor_mode_title">Outdoor mode</string>
+    <string name="audio_wide">Wide</string>
+    <string name="audio_in_front">In Front</string>
+    <string name="audio_traditional">Traditional</string>
+    <string name="mode_normal">Normal</string>
+    <string name="custom_name">Custom</string>
+    <string name="mode_classical">Classical</string>
+    <string name="mode_dance">Dance</string>
+    <string name="mode_jazz">Jazz</string>
+    <string name="mode_pop">Pop</string>
+    <string name="mode_rock">Rock</string>
+    <string name="mode_vocal">Vocal</string>
+    <string name="audio_wizard_tile">AudioWizard</string>
+>>>>>>> CHANGE (841f61 zenfone6: Add AudioWizard support)
 </resources>
