@@ -3,6 +3,8 @@
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
 # Audio
+-app/AudioWizard/AudioWizard.apk|84BF4AB7F4F4F7D02F6C7AB7F8A5D0A11D55DA48
+-app/AudioWizardView/AudioWizardView.apk
 system_ext/etc/cdma_call_conf.xml
 system_ext/lib64/libadsprpc_system.so
 system_ext/lib64/libcdsprpc_system.so
