@@ -14,6 +14,27 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="audio_category"
+        android:title="@string/audio_title">
+
+    <Preference
+        android:key="audio_pref"
+        android:title="@string/audio_title"
+        android:summary="@string/audio_summary"
+        android:persistent="false" >
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="org.omnirom.device"
+                android:targetClass="org.omnirom.device.audio.AudioSettingsActivity" />
+    </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="gestre_settings"
+        android:title="@string/category_gestures_title">
+
     <Preference
         android:key="gesture_category"
         android:title="@string/category_gestures_title"
@@ -24,6 +45,12 @@
                 android:targetClass="org.omnirom.device.GestureSettingsActivity" />
     </Preference>
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="doze_seetings"
+        android:title="@string/doze_category_title">
+
     <Preference
         android:key="doze_category"
         android:title="@string/doze_category_title"
@@ -33,6 +60,8 @@
                 android:targetPackage="org.omnirom.device"
                 android:targetClass="org.omnirom.device.DozeSettingsActivity" />
     </Preference>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="screen"
