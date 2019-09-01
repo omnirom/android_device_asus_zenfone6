@@ -78,4 +78,6 @@
     <string name="pocket_check_title">Pocket</string>
     <string name="ambient_display_enable">Ambient display must be enabled in display settings</string>
     <string name="wake_entry">Wakeup</string>
+    <string name="audio_title">Audio</string>
+    <string name="asus_audiowizard_entry_title">AudioWizard</string>
 </resources>

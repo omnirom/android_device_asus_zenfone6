@@ -44,4 +44,16 @@
             android:persistent="false" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="audio"
+        android:title="@string/audio_title">
+    <Preference
+        android:title="@string/asus_audiowizard_entry_title"
+        android:key="audiowizard_entry">
+            <intent android:targetPackage="com.asus.maxxaudio.audiowizard"
+                    android:action="android.intent.action.MAIN"
+                    android:targetClass="com.asus.maxxaudio.audiowizard.MainActivity"/>
+    </Preference>
+    </PreferenceCategory>
+
 </PreferenceScreen>
