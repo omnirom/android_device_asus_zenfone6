@@ -7,6 +7,10 @@
 product/lib/com.qualcomm.qti.ant@1.0.so
 product/lib64/com.qualcomm.qti.ant@1.0.so
 
+# Audio
+-app/AudioWizard/AudioWizard.apk;PRESIGNED
+-app/AudioWizardView/AudioWizardView.apk;PRESIGNED
+
 # Bluetooth (aptX)
 -app/aptxals/aptxals.apk
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
