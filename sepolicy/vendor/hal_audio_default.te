@@ -1,0 +1,2 @@
+# Allow hal_audio_default to read files in vendor/etc/dts/offline_hptuning.db (*)
+allow hal_audio_default vendor_configs_file:file { ioctl lock };
