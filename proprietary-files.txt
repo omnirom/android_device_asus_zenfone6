@@ -4,6 +4,10 @@ lib64/com.qualcomm.qti.ant@1.0.so
 lib/com.qualcomm.qti.ant@1.0.so
 -lib/libantradio.so
 
+# Audio
+-app/AudioWizard/AudioWizard.apk
+-app/AudioWizardView/AudioWizardView.apk
+
 # Bluetooth (aptX)
 -app/aptxals/aptxals.apk
 lib64/libaptX_encoder.so|0cebad28afcf29f931bdc2d24fce2730dc882ecf
