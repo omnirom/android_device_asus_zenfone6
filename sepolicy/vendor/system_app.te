@@ -1,1 +1,2 @@
+get_prop(system_app, vendor_asus_sp_prop)
 get_prop(system_app, vendor_dts_prop)

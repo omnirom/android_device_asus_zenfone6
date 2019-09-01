@@ -34,7 +34,13 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
 
-# audio
+# Audio
+PRODUCT_PACKAGES += \
+    dtsaudiojar \
+    AsusDtsAudio
+
+PRODUCT_BOOT_JARS += dtsaudiojar
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
