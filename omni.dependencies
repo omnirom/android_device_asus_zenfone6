@@ -10,5 +10,11 @@
     "repository": "android_packages_apps_SnapdragonCamera2",
     "target_path": "packages/apps/SnapdragonCamera2",
     "revision": "android-10"
+  },
+  {
+    "remote": "aosp",
+    "repository": "platform/hardware/qcom/bootctrl",
+    "target_path": "hardware/qcom/bootctrl",
+    "revision": "refs/tags/android-10.0.0_r2"
   }
 ]
