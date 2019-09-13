@@ -169,6 +169,8 @@ include vendor/omni/sepolicy/sepolicy.mk
 #BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 
+TARGET_OTA_ASSERT_DEVICE := WW_I01WD
+
 # Treble
 BOARD_VNDK_VERSION := current
 PRODUCT_EXTRA_VNDK_VERSIONS := 28
