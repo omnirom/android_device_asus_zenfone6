@@ -39,6 +39,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # A/B
+AB_OTA_UPDATER := true
+
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
@@ -54,6 +56,9 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService
+
+# Api
+PRODUCT_SHIPPING_API_LEVEL := 28
 
 # audio
 PRODUCT_PACKAGES += \
@@ -146,6 +151,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Properties
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Rootdir
 PRODUCT_COPY_FILES += \
