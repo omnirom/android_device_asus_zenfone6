@@ -84,9 +84,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyalsa
 
-# Exclude vibrator from InputManager
+# Exclude vibrator from InputManager && overlay ueventd.rc from /vendor
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml \
+    $(LOCAL_PATH)/configs/ueventd.rc:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/29/ueventd.rc
 
 # FM
 #PRODUCT_PACKAGES += \
