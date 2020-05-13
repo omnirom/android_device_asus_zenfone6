@@ -49,6 +49,11 @@
             android:title="@string/smart_key_title"
             android:persistent="false"/>
 
+        <org.omnirom.device.AppSelectListPreference
+            android:key="smart_double"
+            android:title="@string/smart_double_title"
+            android:persistent="false"/>
+
      </PreferenceCategory>
 
     <PreferenceCategory

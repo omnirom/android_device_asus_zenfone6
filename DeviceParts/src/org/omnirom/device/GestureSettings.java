@@ -73,6 +73,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String KEY_W_APP = "w_gesture_app";
     public static final String KEY_Z_APP = "z_gesture_app";
     public static final String KEY_GOOGLE_APP = "smart_switch";
+    public static final String KEY_SMART_DOUBLE = "smart_double";
 
     public static final String KEY_FP_GESTURE_CATEGORY = "key_fp_gesture_category";
     public static final String KEY_FP_GESTURE_DEFAULT_CATEGORY = "gesture_settings";
@@ -87,6 +88,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String DEVICE_GESTURE_MAPPING_5 = "device_gesture_mapping_5_0";
     public static final String DEVICE_GESTURE_MAPPING_6 = "device_gesture_mapping_6_0";
     public static final String DEVICE_GESTURE_MAPPING_7 = "device_gesture_mapping_7_0";
+    public static final String DEVICE_GESTURE_MAPPING_8 = "device_gesture_mapping_8_0";
 
     private TwoStatePreference mProxiSwitch;
     private TwoStatePreference mSwipeUpSwitch;
@@ -97,6 +99,7 @@ public class GestureSettings extends PreferenceFragment implements
     private AppSelectListPreference mLetterVGesture;
     private AppSelectListPreference mLetterWGesture;
     private AppSelectListPreference mLetterZGesture;
+    private AppSelectListPreference mSmartKeyDouble;
     private AppSelectListPreference mSmartKeySwitch;
 
     public static final String GESTURE_CONTROL_PATH = "/proc/driver/gesture_type";
@@ -163,6 +166,12 @@ public class GestureSettings extends PreferenceFragment implements
         value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_7);
         mSmartKeySwitch.setValue(value);
         mSmartKeySwitch.setOnPreferenceChangeListener(this);
+
+        mSmartKeyDouble = (AppSelectListPreference) findPreference(KEY_SMART_DOUBLE);
+        mSmartKeyDouble.setEnabled(isGestureSupported(KEY_GOOGLE_APP));// use the same path as google app
+        value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_8);
+        mSmartKeyDouble.setValue(value);
+        mSmartKeyDouble.setOnPreferenceChangeListener(this);
 
         mSwipeUpSwitch = (TwoStatePreference) findPreference(KEY_SWIPEUP_SWITCH);
         mSwipeUpSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
@@ -231,6 +240,11 @@ public class GestureSettings extends PreferenceFragment implements
             boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
             setGestureEnabledGoogle(KEY_GOOGLE_APP, !gestureDisabled);
             Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_7, value);
+        } else if (preference == mSmartKeyDouble) {
+            String value = (String) newValue;
+            boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
+            setGestureEnabledGoogle(KEY_GOOGLE_APP, !gestureDisabled);
+            Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_8, value);
         }
         return true;
     }
@@ -349,6 +363,7 @@ public class GestureSettings extends PreferenceFragment implements
             mLetterWGesture.setPackageList(mInstalledPackages);
             mLetterZGesture.setPackageList(mInstalledPackages);
             mSmartKeySwitch.setPackageList(mInstalledPackages);
+            mSmartKeyDouble.setPackageList(mInstalledPackages);
         }
     }
 }
