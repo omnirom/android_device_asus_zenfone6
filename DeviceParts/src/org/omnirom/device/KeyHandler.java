@@ -88,6 +88,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_GESTURE_W = 17;
     private static final int KEY_GESTURE_Z = 44;
     private static final int KEY_GOOGLE_APP = 0x248;
+    private static final int KEY_GOOGLE_LONG = 0x249;
     private static final int KEY_SWIPEUP_GESTURE = 103;
 
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
@@ -102,12 +103,14 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
         KEY_GOOGLE_APP,
+        KEY_GOOGLE_LONG,
         FP_GESTURE_LONG_PRESS
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
         KEY_DOUBLE_TAP,
-        KEY_GOOGLE_APP
+        KEY_GOOGLE_APP,
+        KEY_GOOGLE_LONG
     };
 
     protected final Context mContext;
@@ -337,6 +340,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getScanCode() == KEY_GOOGLE_APP && SmartKey.equals(AppSelectListPreference.WAKE_ENTRY)) {
             return true;
         }
+        if (event.getScanCode() == KEY_GOOGLE_LONG && SmartKey.equals(AppSelectListPreference.WAKE_ENTRY)) {
+            return true;
+        }
          String value = getGestureValueForScanCode(event.getScanCode());
         if (!TextUtils.isEmpty(value) && value.equals(AppSelectListPreference.WAKE_ENTRY)) {
             if (DEBUG) Log.i(TAG, "isWakeEvent " + event.getScanCode() + value);
@@ -539,6 +545,10 @@ public class KeyHandler implements DeviceKeyHandler {
         if (KEY_GOOGLE_APP == scanCode) {
             return Settings.System.getStringForUser(mContext.getContentResolver(),
                    GestureSettings.DEVICE_GESTURE_MAPPING_7, UserHandle.USER_CURRENT);
+        }
+        if (KEY_GOOGLE_LONG == scanCode) {
+            return Settings.System.getStringForUser(mContext.getContentResolver(),
+                   GestureSettings.DEVICE_GESTURE_MAPPING_8, UserHandle.USER_CURRENT);
         }
         return null;
     }
