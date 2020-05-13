@@ -44,9 +44,22 @@
     <PreferenceCategory
         android:title="@string/smart_google">
 
+        <SwitchPreference
+            android:key="smart_key"
+            android:title="@string/smart_google_tile"
+            android:summaryOn="@string/smart_key_on"
+            android:summaryOff="@string/smart_key_off"/>
+
         <org.omnirom.device.AppSelectListPreference
             android:key="smart_switch"
             android:title="@string/smart_key_title"
+            android:dependency="smart_key"
+            android:persistent="false"/>
+
+        <org.omnirom.device.AppSelectListPreference
+            android:key="smart_double"
+            android:title="@string/smart_double_title"
+            android:dependency="smart_key"
             android:persistent="false"/>
 
      </PreferenceCategory>
