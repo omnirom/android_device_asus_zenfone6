@@ -88,6 +88,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_GESTURE_W = 17;
     private static final int KEY_GESTURE_Z = 44;
     private static final int KEY_GOOGLE_APP = 0x248;
+    private static final int KEY_GOOGLE_LONG = 0x249;
     private static final int KEY_SWIPEUP_GESTURE = 103;
 
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
@@ -102,11 +103,13 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
         KEY_GOOGLE_APP,
+        KEY_GOOGLE_LONG,
         FP_GESTURE_LONG_PRESS
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
         KEY_DOUBLE_TAP,
+        KEY_GOOGLE_LONG,
         KEY_GOOGLE_APP
     };
 
@@ -135,6 +138,8 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean isOPCameraAvail;
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
+    private long mSmartKeyTime;
+    private static final long SMARTKEY_DELAY_MILLIS = 2000;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -281,8 +286,9 @@ public class KeyHandler implements DeviceKeyHandler {
 
         if (DEBUG) Log.i(TAG, "nav_code= " + event.getScanCode());
         int fpcode = event.getScanCode();
+        long eventTime = event.getDownTime();
         mFPcheck = canHandleKeyEvent(event);
-        String value = getGestureValueForFPScanCode(fpcode);
+        String value = getGestureValueForFPScanCode(fpcode, eventTime);
         if (mFPcheck && mDispOn && !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY)){
             isFpgesture = true;
             if (!launchSpecialActions(value) && !isCameraLaunchEvent(event)) {
@@ -317,7 +323,7 @@ public class KeyHandler implements DeviceKeyHandler {
             return false;
         }
         if (mFPcheck) {
-            String value = getGestureValueForFPScanCode(event.getScanCode());
+            String value = getGestureValueForFPScanCode(event.getScanCode(), event.getDownTime());
             return !TextUtils.isEmpty(value) && value.equals(AppSelectListPreference.CAMERA_ENTRY);
         } else {
             String value = getGestureValueForScanCode(event.getScanCode());
@@ -333,8 +339,11 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getScanCode() == KEY_SWIPEUP_GESTURE) {
             return true;
         }
-        String SmartKey = getGestureValueForFPScanCode(event.getScanCode());
+        String SmartKey = getGestureValueForFPScanCode(event.getScanCode(), event.getDownTime());
         if (event.getScanCode() == KEY_GOOGLE_APP && SmartKey.equals(AppSelectListPreference.WAKE_ENTRY)) {
+            return true;
+        }
+        if (event.getScanCode() == KEY_GOOGLE_LONG && SmartKey.equals(AppSelectListPreference.WAKE_ENTRY)) {
             return true;
         }
          String value = getGestureValueForScanCode(event.getScanCode());
@@ -531,14 +540,18 @@ public class KeyHandler implements DeviceKeyHandler {
         return null;
     }
 
-    private String getGestureValueForFPScanCode(int scanCode) {
+    private String getGestureValueForFPScanCode(int scanCode, long eventTime) {
+        final long now = SystemClock.uptimeMillis() + mSmartKeyTime;
         if (FP_GESTURE_LONG_PRESS == scanCode) {
             return Settings.System.getStringForUser(mContext.getContentResolver(),
                    GestureSettings.DEVICE_GESTURE_MAPPING_0, UserHandle.USER_CURRENT);
         }
-        if (KEY_GOOGLE_APP == scanCode) {
+        if (KEY_GOOGLE_APP == scanCode && now <  eventTime + SMARTKEY_DELAY_MILLIS) {
             return Settings.System.getStringForUser(mContext.getContentResolver(),
                    GestureSettings.DEVICE_GESTURE_MAPPING_7, UserHandle.USER_CURRENT);
+        } else if (KEY_GOOGLE_LONG == scanCode && now > eventTime + SMARTKEY_DELAY_MILLIS) {
+            return Settings.System.getStringForUser(mContext.getContentResolver(),
+                   GestureSettings.DEVICE_GESTURE_MAPPING_8, UserHandle.USER_CURRENT);
         }
         return null;
     }
