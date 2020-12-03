@@ -60,6 +60,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libgui_shim
 
+# Configstore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # DeviceParts
 PRODUCT_PACKAGES += \
     DeviceParts
