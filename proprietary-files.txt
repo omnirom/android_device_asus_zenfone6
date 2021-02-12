@@ -70,6 +70,10 @@ system_ext/lib64/libdpmtcm.so
 -system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk
 
 # FM
+-app/AsusFMRadio/AsusFMRadio.apk|AE270CC2B173FE7B2C77DEA0A4A1E8BB85CB3F09
+-app/AsusFMService/AsusFMService.apk
+-framework/com.asus.fm.jar
+etc/permissions/com.asus.fm.xml
 system_ext/lib64/fm_helium.so
 system_ext/lib64/libfm-hci.so
 system_ext/lib64/vendor.qti.hardware.fm@1.0.so

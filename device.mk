@@ -102,12 +102,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 # FM
-#PRODUCT_PACKAGES += \
-    FM2 \
+PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
-#PRODUCT_BOOT_JARS += qcom.fmradio
+PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Frameworks
 PRODUCT_PACKAGES += \
