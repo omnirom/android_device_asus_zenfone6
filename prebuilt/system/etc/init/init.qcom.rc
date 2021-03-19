@@ -1,0 +1,2 @@
+on init
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/app/IWlanService/IWlanService.apk bind
