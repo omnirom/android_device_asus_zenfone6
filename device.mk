@@ -134,13 +134,18 @@ PRODUCT_PACKAGES += \
     librs_jni
 
 # NFC - NQ (NXP)
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0:64 \
+    android.hardware.nfc@1.1:64 \
+    android.hardware.nfc@1.2:64 \
+    android.hardware.secure_element@1.0:64 \
+    com.android.nfc_extras \
+    SecureElement \
     Tag \
-    com.android.nfc_extras
+    vendor.nxp.nxpese@1.0:64 \
+    vendor.nxp.nxpnfc@1.0:64
 
-#PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1 \
-    android.hardware.nfc@1.0
+PRODUCT_BOOT_JARS += com.nxp.nfc.nq
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
@@ -163,7 +168,8 @@ PRODUCT_PACKAGES += \
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
-    RemovePackages
+    RemovePackages \
+    RemovePackages2
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

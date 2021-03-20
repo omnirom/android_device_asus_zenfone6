@@ -59,4 +59,13 @@ $(WFD_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /system_ext/lib64/$(notdir $@) $@
 ALL_DEFAULT_INSTALLED_MODULES += $(WFD_SYMLINKS)
 
+NFC_LIB := libnqnfc_nci_jni.so
+NFC_SYMLINKS := $(addprefix $(TARGET_OUT_APPS)/NQNfcNci/lib/arm64/,$(notdir $(NFC_LIB)))
+$(NFC_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "NFC lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/lib64/$(notdir $@) $@
+ALL_DEFAULT_INSTALLED_MODULES += $(NFC_SYMLINKS)
+
 endif

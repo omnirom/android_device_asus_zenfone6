@@ -10,3 +10,6 @@ type xrom_file, file_type;
 # Offscreen Gestures
 type sysfs_gesture, sysfs_type, fs_type;
 type proc_touchscreen, proc_type, sysfs_type, fs_type;
+
+# NFC
+type nfc_vendor_data_file, data_file_type, file_type;
