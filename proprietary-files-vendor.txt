@@ -385,7 +385,6 @@ vendor/etc/init/ims_rtp_daemon.rc
 vendor/etc/init/imsdatadaemon.rc
 vendor/etc/init/imsqmidaemon.rc
 vendor/etc/init/imsrcsd.rc
-vendor/etc/init/init-qcril-data.rc
 vendor/etc/init/init.asus.record.rc
 vendor/etc/init/init.embmssl_server.rc
 vendor/etc/init/init.goodixfp.rc

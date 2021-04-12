@@ -789,6 +789,7 @@ VENDOR_SKIP_FILES_COMMON=(
     "bin/wifilearner"
     "bin/hw/android.hardware.wifi@1.0-service"
     "etc/init/android.hardware.wifi@1.0-service.rc"
+    "etc/init/init-qcril-data.rc"
     "etc/vintf/manifest/android.hardware.wifi@1.0-service.xml"
     "etc/init/vendor.qti.hardware.wifi.wifilearner@1.0-service.rc"
     "lib64/vendor.qti.hardware.wifi.wifilearner@1.0.so"
