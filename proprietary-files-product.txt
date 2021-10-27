@@ -24,7 +24,6 @@ system_ext/lib64/vendor.display.postproc@1.0.so
 system_ext/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
 # QTI Telephony
--system_ext/app/datastatusnotification/datastatusnotification.apk
 -system_ext/app/DynamicDDSService/DynamicDDSService.apk
 -system_ext/app/uimgbaservice/uimgbaservice.apk
 system_ext/etc/permissions/embms.xml
