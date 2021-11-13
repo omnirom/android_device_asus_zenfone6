@@ -169,6 +169,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
+# Shims
+PRODUCT_PACKAGES += \
+    lib-imsvt
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/libshim/lib-imsvideocodec.so:$(TARGET_COPY_OUT_SYSTEM_EXT)/lib64/lib-imsvideocodec.so
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
