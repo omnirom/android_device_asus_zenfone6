@@ -62,14 +62,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_ZS630KL.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_volumes_ZS630KL.xml
 
 # Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
+#PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
+#PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/qcom/opensource/commonsys-intf/bluetooth/overlay/qva
+#PRODUCT_PACKAGE_OVERLAYS += vendor/qcom/opensource/commonsys-intf/bluetooth/overlay/qva
 
-PRODUCT_PACKAGES += BluetoothExt
-PRODUCT_PACKAGES += libbluetooth_qti
-PRODUCT_PACKAGES += vendor.qti.hardware.bluetooth_dun-V1.0-java
+#PRODUCT_PACKAGES += BluetoothExt
+#PRODUCT_PACKAGES += libbluetooth_qti
+#PRODUCT_PACKAGES += vendor.qti.hardware.bluetooth_dun-V1.0-java
 
 # Boot control
 PRODUCT_PACKAGES += \
@@ -108,7 +108,7 @@ PRODUCT_PACKAGES += \
     libqcomfm_jni \
     qcom.fmradio
 
-PRODUCT_BOOT_JARS += qcom.fmradio
+#PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Frameworks
 PRODUCT_PACKAGES += \
@@ -205,7 +205,7 @@ PRODUCT_PACKAGES += \
     libavservices_minijail \
     libnl \
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     WfdCommon
 
 include vendor/qcom/opensource/display-commonsys-intf/config/display-product-system.mk
