@@ -237,10 +237,10 @@ persist.vendor.asus.startlog=0
 # [ASUS BSP] Debug
 
 #Battery Property
-ro.charger.enable_suspend = 1
+ro.charger.enable_suspend=1
 
 #Enable Qualcomm mdp rotator
-vendor.display.enable_rotator_ui = 1
+vendor.display.enable_rotator_ui=1
 
 # Extra Asus
 ro.build.asus.sku=WW
