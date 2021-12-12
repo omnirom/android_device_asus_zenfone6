@@ -98,10 +98,14 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     libion \
-    libtinyxml2
+    libtinyalsa \
+    libtinyxml2 \
+    qtidisplaycommonsys \
+    qtiunifeddraw
 
-PRODUCT_PACKAGES += \
-    libtinyalsa
+SOONG_CONFIG_qtidisplaycommonsys_displayconfig_enabled := true
+include vendor/qcom/opensource/commonsys-intf/display/config/display-product-system.mk
+include vendor/qcom/opensource/commonsys/display/config/display-product-commonsys.mk
 
 # Exclude vibrator from InputManager
 PRODUCT_COPY_FILES += \
@@ -215,5 +219,3 @@ PRODUCT_PACKAGES += \
 # Wifi Display
 PRODUCT_PACKAGES += \
     libavservices_minijail
-
-include vendor/qcom/opensource/display-commonsys-intf/config/display-product-system.mk
