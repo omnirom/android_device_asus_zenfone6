@@ -60,8 +60,40 @@ void property_override(const std::string& name, const std::string& value)
     }
 }
 
+/* From Magisk@jni/magiskhide/hide_utils.c */
+static const char *snet_prop_key[] = {
+    "ro.boot.vbmeta.device_state",
+    "ro.boot.verifiedbootstate",
+    "ro.boot.flash.locked",
+    "ro.boot.veritymode",
+    "ro.boot.warranty_bit",
+    "ro.warranty_bit",
+    NULL
+};
+
+ static const char *snet_prop_value[] = {
+    "locked",
+    "green",
+    "1",
+    "enforcing",
+    "0",
+    "0",
+    NULL
+};
+
+ static void workaround_snet_properties() {
+
+     // Hide all sensitive props
+    for (int i = 0; snet_prop_key[i]; ++i) {
+        property_override(snet_prop_key[i], snet_prop_value[i]);
+    }
+}
+
 void vendor_load_properties()
 {
+    // SafetyNet workaround
+    property_override("ro.boot.verifiedbootstate", "green");
+    workaround_snet_properties();
 }
 
 } //init
