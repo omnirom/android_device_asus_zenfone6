@@ -28,4 +28,15 @@
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),zenfone6))
+
+include $(CLEAR_VARS)
+
+ASUSFW_MOUNT_POINT_SYMLINK := $(TARGET_OUT_VENDOR)/asusfw
+$(ASUSFW_MOUNT_POINT_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $@ link"
+	@rm -rf $@
+	$(hide) ln -sf /mnt/vendor/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(ASUSFW_MOUNT_POINT_SYMLINK)
+
 endif
