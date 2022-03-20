@@ -197,6 +197,10 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml \
     tcmiface
 
+# Telephony extension
+PRODUCT_PACKAGES += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
 # Update engine
 PRODUCT_PACKAGES += \
     otapreopt_script \
