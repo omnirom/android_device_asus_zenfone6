@@ -35,13 +35,13 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 media.stagefright.thumbnail.prefer_hw_codecs=true
-media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
+media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 #16777215 is decimal sum of supported codecs in AAL
-#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD MHAS
-vendor.mm.enable.qcom_parser=12582911
+#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD MHAS
+vendor.mm.enable.qcom_parser=12580863
 persist.mm.enable.prefetch=true
 
 #Netflix custom property
@@ -79,6 +79,10 @@ persist.vendor.btstack.aac_frm_ctl.enabled=true
 persist.bluetooth.avrcpversion=avrcp16
 persist.vendor.btstack.enable.twsplus=true
 persist.vendor.btstack.enable.twsplussho=true
+
+# ASUS BSP Bluetooth: disable SWB
+persist.vendor.qcom.bluetooth.enable.swb=false
+persist.vendor.qcom.bluetooth.enable.swbpm=false
 
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
