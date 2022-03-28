@@ -3,5 +3,3 @@ allow init sysfs_gesture:file { rw_file_perms setattr };
 
 # Allow init to bind mount over vendor file
 allow init { system_file vendor_file }:file mounton;
-
-allow init vendor_qcc_trd:process transition;

@@ -1,4 +1,2 @@
 #type asus_prop, property_type;
 type vendor_camera_prop, property_type;
-type vendor_ims_prop, property_type;
-type vendor_radio_prop, property_type;
