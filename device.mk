@@ -172,6 +172,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
+# Rootdir
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/init.target.rc:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/init/hw/init.target.rc
+
 # Shims
 PRODUCT_PACKAGES += \
     lib-imsvt
