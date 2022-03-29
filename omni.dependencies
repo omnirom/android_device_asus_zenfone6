@@ -9,7 +9,7 @@
     "remote": "omnirom",
     "repository": "android_kernel_asus_sm8150",
     "target_path": "kernel/asus/sm8150",
-    "revision": "android-12.0"
+    "revision": "android-12.1"
   },
   {
     "remote": "gitlab",
