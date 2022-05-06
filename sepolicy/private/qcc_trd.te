@@ -1,0 +1,2 @@
+type vendor_qcc_trd_exec, exec_type, file_type;
+allow vendor_qcc_trd vendor_qcc_trd_exec:file { entrypoint getattr read };
