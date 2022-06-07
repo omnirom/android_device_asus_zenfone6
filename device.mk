@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhwbinder
 
+# Init
+PRODUCT_PACKAGES += \
+    libinit_sm8150
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fts_ts.kl:system/usr/keylayout/fts_ts.kl \

@@ -1,0 +1,13 @@
+cc_library_static {
+    name: "libinit_sm8150",
+
+    include_dirs: [
+        "system/core/init",
+    ],
+    shared_libs: ["libbase"],
+    cflags: [
+        "-Wall",
+    ],
+    srcs: ["init_sm8150.cpp"],
+    recovery_available: true,
+}
