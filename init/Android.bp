@@ -1,0 +1,13 @@
+cc_library_static {
+    name: "libinit_zenfone6",
+
+    include_dirs: [
+        "system/core/init",
+    ],
+    shared_libs: ["libbase"],
+    cflags: [
+        "-Wall",
+    ],
+    srcs: ["init_zenfone6.cpp"],
+    recovery_available: true,
+}
