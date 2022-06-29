@@ -60,6 +60,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libinit_sm8150
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/vendor/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/first_stage_ramdisk/fstab.qcom
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fts_ts.kl:system/usr/keylayout/fts_ts.kl \
