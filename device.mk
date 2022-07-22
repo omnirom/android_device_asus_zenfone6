@@ -28,33 +28,21 @@ $(call inherit-product, device/asus/sm8150-common/common.mk)
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+PRODUCT_PACKAGES += \
+    FrameworksResDeviceOverlay \
+    TetheringOverlay \
+    WifiOverlay
 
 # audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/audio_policy_volumes_ZS630KL.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_volumes_ZS630KL.xml
-
-# Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
-PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
-
-PRODUCT_PACKAGE_OVERLAYS += vendor/qcom/opensource/commonsys-intf/bluetooth/overlay/qva
-
-PRODUCT_PACKAGES += BluetoothExt
-PRODUCT_PACKAGES += libbluetooth_qti
-PRODUCT_PACKAGES += vendor.qti.hardware.bluetooth_dun-V1.0-java
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_policy_volumes_ZS630KL.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes_ZS630KL.xml
 
 # DeviceParts
 PRODUCT_PACKAGES += \
     DeviceParts \
     OmniDisplayManager
-
-# Frameworks
-PRODUCT_PACKAGES += \
-    FrameworksResOverlay
 
 # Init
 PRODUCT_PACKAGES += \
@@ -69,11 +57,8 @@ PRODUCT_COPY_FILES += \
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/recovery,recovery/root)
-
-# Rootdir
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.target.rc:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/init/hw/init.target.rc
+    $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/recovery,recovery/root) \
+    $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/vendor,vendor)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
