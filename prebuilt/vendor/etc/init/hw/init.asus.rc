@@ -1,0 +1,585 @@
+import /vendor/etc/init/hw/init.factory.rc
+import /vendor/etc/init/hw/init.asus.storage.rc
+
+on init
+    # boost UFS during boot +++
+    write /sys/devices/platform/soc/1d84000.ufshc/clkscale_enable 0
+    write /sys/devices/platform/soc/1d84000.ufshc/clkgate_enable 0
+    write /sys/devices/platform/soc/1d84000.ufshc/hibern8_on_idle_enable 0
+    # boost UFS during boot ---
+    chown system system /sys/devices/platform/soc/soc\:asustek_googlekey/googlekey_enable
+    # ZRAM setup
+    write /proc/sys/vm/page-cluster 0
+
+on fs
+
+    wait /dev/block/bootdevice/by-name/APD
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev noatime barrier=1
+
+    wait /dev/block/bootdevice/by-name/ADF
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/ADF
+    mount ext4 /dev/block/bootdevice/by-name/ADF /ADF nosuid nodev noatime barrier=1
+
+    wait /dev/block/bootdevice/by-name/logdump
+    exec /system/bin/e2fsck -p /dev/block/bootdevice/by-name/logdump
+    mount ext4 /dev/block/bootdevice/by-name/logdump /batinfo nosuid nodev noatime barrier=1
+
+on post-fs
+on post-fs-data
+
+    chmod 0666 /sys/class/drm/hdr_mode
+    chmod 0666 /sys/class/drm/color_mode
+    chmod 0666 /sys/class/kgsl/kgsl-3d0/max_gpuclk
+
+    chown system system /APD
+    chmod 0775 /APD
+    restorecon_recursive /APD
+
+    chown system system /ADF
+    chmod 0775 /ADF
+    restorecon_recursive /ADF
+
+    chown shell root /batinfo
+    chmod 0775 /batinfo
+    restorecon_recursive /batinfo
+
+
+    chown system system /sys/class/leds/vibrator/vmax_mv
+
+    #camera
+    setprop persist.vendor.camera.hal3only 1
+    setprop persist.camera.capture.hdrplus.dump 0
+    setprop persist.camera.capture.sll.dump 0
+    chmod 777 /data/vendor/camera
+    chmod 775 /mnt/vendor/persist
+
+    copy /vendor/factory/lcd_calibration.ini /ADF/lcd_calibration.ini
+    chown system system /ADF/lcd_calibration.ini
+    chmod 0666 /ADF/lcd_calibration.ini
+    restorecon /ADF/lcd_calibration.ini
+
+# for asusrecord service (rotation)
+    start asusrecord
+
+
+#ASUS_BSP Lucien +++
+	chmod 0777 /dev/asusMotoDrv
+#ASUS_BSP Lucien ---
+
+
+#ASUS_BSP G sensor 2 +++
+    chown system camera /dev/asus2ndAccelSensor
+    chmod 0660 /dev/asus2ndAccelSensor
+    chown system camera /dev/asus2ndGyroSensor
+    chmod 0660 /dev/asus2ndGyroSensor
+    chown system camera /sys/class/icm206xx/gyro2_poll_delay
+    chmod 0664 /sys/class/icm206xx/gyro2_poll_delay
+    chown system camera /sys/class/icm206xx/accel2_poll_delay
+    chmod 0664 /sys/class/icm206xx/accel2_poll_delay
+#ASUS_BSP G sensor 2 ---
+
+#ASUS_BSP+++ "Wifi for softAP userlist"
+    chmod 0777 /data/misc/dhcp
+#ASUS_BSP--- "Wifi for softAP userlist"
+
+# DTS_AUDIO START
+    mkdir /data/vendor/audio/dts 0771 media audio
+
+    setprop ro.vendor.dts.licensepath "/vendor/etc/dts/"
+    setprop ro.vendor.dts.cfgpath "/vendor/etc/dts/"
+# DTS_AUDIO END
+
+#ASUS_BSP Audio calibration +++
+    chmod 0777 /sys/bus/i2c/devices/i2c-1/1-0034/reg
+    chmod 0777 /sys/bus/i2c/devices/i2c-1/1-0034/rw
+    chmod 0777 /sys/bus/i2c/devices/i2c-1/1-0035/reg
+    chmod 0777 /sys/bus/i2c/devices/i2c-1/1-0035/rw
+
+    chown system shell /dev/i2c-1
+    chmod 0777 /dev/i2c-1
+
+    chown system shell /dev/ASUS_rpc_34
+    chmod 0777 /dev/ASUS_rpc_34
+
+    chown system shell /dev/ASUS_rpc_35
+    chmod 0777 /dev/ASUS_rpc_35
+
+    chown system shell /mnt/vendor/asusfw/audio/SPK_REC_calibration_value_range
+    chmod 0777 /mnt/vendor/asusfw/audio/SPK_REC_calibration_value_range
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/0x34_aftercalmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/0x34_aftercalmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/0x34_origmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/0x34_origmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/0x35_aftercalmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/0x35_aftercalmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/0x35_origmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/0x35_origmtp.txt
+
+
+
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x34_aftercalmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x34_aftercalmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x34_origmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x34_origmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x35_aftercalmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x35_aftercalmtp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x35_origmtp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/spkcal_save_0x35_origmtp.txt
+
+
+
+
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_speaker0_log_tmp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_speaker0_log_tmp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_speaker0_data_tmp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_speaker0_data_tmp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_recal_speaker0_log_tmp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_recal_speaker0_log_tmp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_log.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_log.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_log_tmp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_log_tmp.txt
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_data_tmp.txt
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/cal_self_receiver0_data_tmp.txt
+
+    chown system shell /system/vendor/etc/mute_10sec.wav
+    chmod 0777 /system/vendor/etc/mute_10sec.wav
+
+    chown system shell /system/vendor/etc/mute_10sec.wav
+    chmod 0777 /system/vendor/etc/mute_10sec.wav
+
+    chown system shell /mnt/vendor/asusfw/audio/calibration_data/tfa98xx-sysfs.lck
+    chmod 0777 /mnt/vendor/asusfw/audio/calibration_data/tfa98xx-sysfs.lck
+
+#ASUS_BSP Audio calibration ---
+
+#ASUS_BSP Byron +++
+	chmod 0777 /dev/stmvl53l1_ranging
+	chmod 0777 /vendor/bin/LaserFocus_on
+	chmod 0777 /vendor/bin/LaserFocus_Cal
+	chmod 0777 /vendor/bin/LaserFocus_LaserFocus_value
+	chmod 0777 /vendor/bin/laser_ATDTest
+	chmod 0777 /vendor/bin/lasercsc
+#ASUS_BSP Byron ---
+
+# ASUS_Clay +++ "For SensorService Log"
+    mkdir /asdf/sensor
+    restorecon_recursive /asdf/sensor
+    chmod 0777 /asdf/sensor
+# ASUS_Clay --- "For SensorService Log"
+
+# add for otg reverse charging
+	setprop ro.sys.reversecharging 3
+	setprop ro.build.disableaicharging 1
+
+# for sp/devinfo tool
+    start asus_sp
+
+on early-boot
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/mount_apd.sh
+    start googlekey_config
+
+on boot
+	insmod /vendor/lib/modules/texfat.ko
+    setprop persist.google.assistant.enable 1
+    setprop ro.boot.id.rf_2 ${ro.boot.id.rf}
+    setprop ro.boot.id.stage_2 ${ro.boot.id.stage}
+
+# BT A2DP offload mode property
+setprop persist.bluetooth.a2dp_offload.disabled false
+
+# for ASUS display HIT service
+on property:splendid.refreshscreen=1
+    start refreshscreen
+
+service refreshscreen /vendor/bin/ScreenRefresh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:asus_vendor_splendid:s0
+
+on property:sys.boot_completed=1
+
+    # ASUS_BSP +++ Copy dualcam cali data to /data/vendor/camera because AP cannot read /proc and /vendor/facotry
+    copy /proc/driver/dualcam_cali /data/vendor/camera/dualcam_cali
+    chmod 755 /data/vendor/camera/dualcam_cali
+    copy /vendor/factory/dualcam_cali.bin /data/vendor/camera/dualcam_cali.bin
+    chmod 755 /data/vendor/camera/dualcam_cali.bin
+    # ASUS_BSP --- Copy dualcam cali data end
+
+    setprop persist.sys.enableAPD 0
+    # boost UFS during boot +++
+    write /sys/devices/platform/soc/1d84000.ufshc/clkgate_enable 1
+    write /sys/devices/platform/soc/1d84000.ufshc/hibern8_on_idle_enable 1
+    write /sys/devices/platform/soc/1d84000.ufshc/clkscale_enable 1
+    # boost UFS during boot ---
+    start devinfo
+    start storage_status
+    start check_audio_eu
+    write /sys/class/power_supply/battery/device/boot_completed 1
+    start touch_ver
+
+on property:persist.sys.enableAPD=1
+    wait /dev/block/bootdevice/by-name/APD
+    mount ext4 /dev/block/bootdevice/by-name/APD /APD nosuid nodev barrier=1 noatime
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/mount_apd.sh
+    write /sys/class/power_supply/battery/device/demo_app_status 1
+
+on property:persist.bluetooth.btsnooplogmode=filtered
+setprop debug.bluetooth.btsnoop_status start
+
+on property:persist.bluetooth.btsnooplogmode=full
+setprop debug.bluetooth.btsnoop_status start
+
+on property:persist.bluetooth.btsnooplogmode=snoopheadersfiltered
+setprop debug.bluetooth.btsnoop_status start
+
+on property:persist.bluetooth.btsnooplogmode=mediapktsfiltered
+setprop debug.bluetooth.btsnoop_status start
+
+on property:persist.bluetooth.btsnooplogmode=disabled
+setprop debug.bluetooth.btsnoop_status stop
+
+# Storage state +++
+on property:asus.update.storage.status=1
+    start storage_status
+
+
+
+service storage_status /vendor/bin/sh /vendor/bin/storage_status.sh
+    class core
+    user root
+    oneshot
+    disabled
+# Storage state ---
+
+service check_audio_eu /vendor/bin/check_audio_eu_parameter
+    user root
+    group root
+    seclabel u:r:asus_audio:s0
+    oneshot
+    disabled
+
+on property:persist.sys.enableAPD=0
+    umount /APD
+    write /sys/class/power_supply/battery/device/demo_app_status 0
+
+on property:persist.sys.ultrabatterylife=1
+    write /sys/class/power_supply/battery/device/ultra_bat_life 1
+    write /asdf/CHGLimit 0
+on property:persist.sys.ultrabatterylife=0
+    write /sys/class/power_supply/battery/device/ultra_bat_life 0
+
+on property:persist.sys.stopcharging=1
+    write /sys/class/power_supply/battery/device/smartchg_stop_charging 1
+on property:persist.sys.stopcharging=0
+    write /sys/class/power_supply/battery/device/smartchg_stop_charging 0
+on property:persist.sys.slowcharging=1
+	write /sys/class/power_supply/battery/device/smartchg_slow_charging 1
+on property:persist.sys.slowcharging=0
+	write /sys/class/power_supply/battery/device/smartchg_slow_charging 0
+
+service set_emmc /system/bin/set_emmc.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:persist.asus.setupwizard_country=*
+    start asus_sp
+    start devinfo
+
+on property:debug.update.deviceinfo=1
+    start asus_sp
+    start devinfo
+
+on property:persist.sys.setupwizard.active=*
+    start devinfo
+
+#Touch hw fw
+chmod 0775 /sys/class/extcon/touch/name
+chmod 0775 /sys/bus/i2c/devices/4-0038/fts_fw_version
+chmod 0777 /sys/bus/i2c/devices/4-0038/fts_charger_mode
+chmod 0777 /sys/devices/virtual/extcon/hallsensor/state
+
+# touch gesture setting
+on property:persist.asus.dclick=0
+	write /sys/bus/i2c/devices/i2c-4/4-0038/dclick_mode 0
+on property:persist.asus.dclick=1
+	write /sys/bus/i2c/devices/i2c-4/4-0038/dclick_mode 1
+on property:persist.asus.swipeup=0
+	write /sys/bus/i2c/devices/i2c-4/4-0038/swipeup_mode 0
+on property:persist.asus.swipeup=1
+	write /sys/bus/i2c/devices/i2c-4/4-0038/swipeup_mode 1
+on property:persist.asus.gesture.type=*
+	write /sys/bus/i2c/devices/i2c-4/4-0038/fts_gesture_mode ${persist.asus.gesture.type}
+
+#add touch Glove property write
+on property:persist.asus.glove=*
+    write /sys/bus/i2c/devices/i2c-4/4-0038/fts_glove_mode ${persist.asus.glove}
+
+#add touch Systemui Skiptouch property write
+on property:persist.vendor.systemui.skiptouch=false
+    write /sys/bus/i2c/devices/i2c-4/4-0038/systemui_skiptouch_mode 0
+on property:persist.vendor.systemui.skiptouch=true
+    write /sys/bus/i2c/devices/i2c-4/4-0038/systemui_skiptouch_mode 1
+
+# for touch_version service
+service touch_ver /vendor/bin/sh /vendor/bin/touch_ver.sh
+    class core
+    user root
+    group root
+    seclabel u:r:asus_touch:s0
+    disabled
+    oneshot
+
+# instant camera setting
+on property:persist.vendor.asus.instant_camera=0
+		write /sys/module/gpio_keys/parameters/volume_key_wake_en 0
+on property:persist.vendor.asus.instant_camera=1
+		write /sys/module/gpio_keys/parameters/volume_key_wake_en 1
+
+# for sp service
+service asus_sp /vendor/bin/sp
+    user root
+    group root
+    disabled
+    oneshot
+
+# for devinfo service
+service devinfo /vendor/bin/devinfo
+    user root
+    group root
+    disabled
+    oneshot
+
+# BT WIFI MAC, BT WIFI firmware version
+service btwifimac  /vendor/bin/sh /vendor/bin/btwifimac.sh
+    class core
+    user root
+    group root
+    oneshot
+    
+on property:sys.boot_completed=1
+    start btwifimac
+
+service qcfwver /vendor/bin/qcfwver /vendor/bin/qcfwver
+    class core
+    user root
+    group root
+    oneshot
+
+on property:sys.boot_completed=1
+    start qcfwver
+
+on property:persist.google.assistant.enable=*
+    write /sys/devices/platform/soc/soc\:asustek_googlekey/googlekey_enable ${persist.google.assistant.enable}
+
+
+
+#ASUS_BSP : set io_is_busy while benchmark +++
+service StorageBench /vendor/bin/sh /vendor/bin/Storage_Benchmark.sh
+    seclabel u:r:vendor_init:s0
+    class core
+    user root
+    oneshot
+    disabled
+
+on property:sys.foregroundapp=*
+	start StorageBench
+#ASUS_BSP : set io_is_busy while benchmark ---
+
+service rstg2k  /vendor/bin/sh /vendor/etc/rstg2k.sh
+    user system
+    group system
+    seclabel u:r:asus_sensors:s0
+    oneshot
+    disabled
+
+on property:vendor.asus.rstg2k=*
+    start rstg2k
+
+service rstgy2k  /vendor/bin/sh /vendor/etc/rstgy2k.sh
+    user system
+    group system
+    seclabel u:r:asus_sensors:s0
+    oneshot
+    disabled
+
+on property:vendor.asus.rstgy2k=*
+    start rstgy2k
+
+
+###+++++++++ CSC Audio calibration server ++++###
+service audio_amp_calibration /vendor/bin/sh /vendor/etc/SpeakerCalibrationTest
+        seclabel u:r:asus_record:s0
+        group root system audio
+        class core
+        user root
+        oneshot
+        disabled
+
+on property:vendor.asus.vendor_audiocalibration=1
+    start audio_amp_calibration
+
+###--------- CSC Audio calibration server ----###
+
+
+#ASUS_BSP Jason4 for lasercsc use on android R +++ 
+on property:vendor.debug.camera.lasercsc=0
+    start asuslasercsc_end
+    
+on property:vendor.debug.camera.lasercsc=1
+    start asuslasercsc_start
+    
+on property:vendor.debug.camera.lasercsc=2
+    start asuslasercsc_readValue
+    
+on property:vendor.debug.camera.lasercsc=100
+    start asuslasercsc_init
+
+service asuslasercsc_init /vendor/bin/lasercsc 100
+    class core
+    user system
+    group system
+    oneshot
+    disabled
+ 
+service asuslasercsc_start /vendor/bin/lasercsc 1
+    class core
+    user system
+    group system
+    oneshot
+    disabled
+	
+service asuslasercsc_end /vendor/bin/lasercsc 0
+    class core
+    user system
+    group system
+    oneshot
+    disabled
+
+service asuslasercsc_readValue /vendor/bin/lasercsc 2
+    class core
+    user system
+    group system
+    oneshot
+    disabled
+
+#ASUS_BSP Jason4 for lasercsc use on android R ---
+
+service shipping_rework  /vendor/bin/sh /vendor/odm/bin/shipping_rework.sh
+    user root
+    group root
+    seclabel u:r:savelogmtp:s0
+    oneshot
+    disabled
+
+on property:vendor.shipping.rework=*
+    start shipping_rework
+
+on property:vendor.shipping.rework.cid=*
+    start shipping_rework    
+
+on property:persist.vendor.asus.wifi.verboselogging=*
+    stop wifi_logtool
+    start wifi_logtool
+
+service wifi_logtool /system/bin/wifi_logtool
+    class core
+    user root
+    group root
+    disabled
+    seclabel u:r:wifi_logtool:s0
+    oneshot
+
+service WiFiFWTool /vendor/bin/sh /vendor/bin/WiFiFWTool.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:persist.vendor.asus.wlanfwdbg=*
+    start WiFiFWTool
+
+on property:vendor.wlan.softap.driver.status=ok
+    write /proc/driver/UTSstatus 1
+
+on property:vendor.wlan.softap.driver.status=unloaded
+    write /proc/driver/UTSstatus 0
+
+# ASUS_BSP+++ for wlan miracast log
+on property:persist.vendor.asus.miracastlog=1
+    setprop vendor.debug.mmosal.config "6013:63"
+    setprop debug.wfd.uibcevents 1
+    setprop sys.tcpdump.size 100
+    setprop sys.tcpdump.num 20
+
+on property:persist.vendor.asus.miracastlog=0
+    setprop vendor.debug.mmosal.config ""
+    setprop debug.wfd.uibcevents 0
+    setprop sys.tcpdump.size 20
+    setprop sys.tcpdump.num 2
+# ASUS_BSP--- for wlan miracast log
+
+#ASUS_BSP: add for key validation +++
+on property:vendor.debug.check.keybox=1
+	chmod 0666 /mnt/vendor/persist/hdcp_flag.txt
+	chmod 0666 /mnt/vendor/persist/attestation.flg
+	start vendor.is_keybox_valid
+
+service vendor.is_keybox_valid /vendor/bin/is_keybox_valid
+    user system
+    group system
+    seclabel u:r:asus_key_validation:s0
+    disabled
+    oneshot
+#ASUS_BSP: add for key validation ---
+
+
+on property:vendor.drm.keystatus=1
+    setprop vendor.debug.drm.keystatus 1
+on property:vendor.drm.keystatus=-1
+    setprop vendor.debug.drm.keystatus -1
+
+#ASUS_BSP add widevine_daemon service+++
+on property:vendor.atd.start.key.install=1
+    start vendor.ins_key
+    
+on property:vendor.drm.keystatus=-1
+    chmod 0644 /ADF/NOWDKY
+    chmod 0644 /ADF/WDKEY
+    start vendor.ins_WDKey 
+    
+service vendor.ins_key /vendor/bin/install_key_server
+    class late_start
+    user root
+    group root
+    seclabel u:r:install_key_server:s0
+    disabled
+    
+service vendor.ins_WDKey /vendor/bin/sh /vendor/bin/ReInsWDKey
+    class core
+    user root
+    group root
+    seclabel u:r:savelogmtp:s0
+    disabled
+    oneshot
+#ASUS_BSP add widevine_daemon service---
