@@ -41,8 +41,7 @@ PRODUCT_COPY_FILES += \
 
 # DeviceParts
 PRODUCT_PACKAGES += \
-    DeviceParts \
-    OmniDisplayManager
+    DeviceParts
 
 # Init
 PRODUCT_PACKAGES += \
