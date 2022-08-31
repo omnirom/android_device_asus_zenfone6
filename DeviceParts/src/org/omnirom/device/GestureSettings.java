@@ -45,7 +45,7 @@ import android.widget.ListView;
 import android.util.Log;
 import static android.provider.Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED;
 import android.os.UserHandle;
-import org.omnirom.omnilib.utils.OmniUtils;
+import org.omnirom.omnilibcore.utils.OmniUtils;
 
 import java.util.Collections;
 import java.util.LinkedList;
