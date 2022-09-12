@@ -1,0 +1,2 @@
+# Wakeup
+genfscon sysfs /devices/virtual/diag/diag/wakeup5                                                               u:object_r:sysfs_wakeup:s0
