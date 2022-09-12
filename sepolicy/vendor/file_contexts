@@ -1,0 +1,9 @@
+# Audio
+/dev/i2c-1                                                                                             u:object_r:audio_device:s0
+/dev/ASUS_rpc_34                                                                                       u:object_r:audio_device:s0
+/dev/ASUS_rpc_35                                                                                       u:object_r:audio_device:s0
+
+/(vendor|system/vendor)/bin/asusrecord                                                                 u:object_r:asus_record_exec:s0
+/(vendor|system/vendor)/etc/check_rcvcal.sh                                                            u:object_r:asus_record_exec:s0
+/(vendor|system/vendor)/etc/check_spkcal.sh                                                            u:object_r:asus_record_exec:s0
+/(vendor|system/vendor)/etc/SpeakerCalibrationTest                                                     u:object_r:asus_record_exec:s0

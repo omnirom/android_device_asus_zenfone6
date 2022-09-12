@@ -1,0 +1,9 @@
+# Audio
+audio.wizard.default.mode                                          u:object_r:vendor_default_prop:s0
+dts.audio.disable_undoredo                                         u:object_r:vendor_default_prop:s0
+ro.asus.audiowizard.outdoor                                        u:object_r:vendor_default_prop:s0
+ro.asus.audio.dualSPK                                              u:object_r:vendor_default_prop:s0
+ro.asus.audio.realStereo                                           u:object_r:vendor_default_prop:s0
+ro.asus.aw.settingentry                                            u:object_r:vendor_default_prop:s0
+ro.audio.monitorRotation                                           u:object_r:vendor_default_prop:s0
+ro.audio.vibra.ring.vol.idx                                        u:object_r:vendor_default_prop:s0
