@@ -51,10 +51,12 @@ VENDOR_SKIP_FILES_COMMON=(
     # Audio
     "etc/audio/audio_policy_configuration.xml"
     "etc/audio_policy_configuration.xml"
+    "etc/audio_policy_configuration_ZS630KL.xml"
     "etc/audio_policy_volumes.xml"
     "etc/audio_policy_volumes_ZS630KL.xml"
-    "etc/audio_tuning_mixer.txt"
+    "etc/default_volume_tables.xml"
     "etc/bluetooth_qti_audio_policy_configuration.xml"
+    "etc/r_submix_audio_policy_configuration.xml"
     "bin/hw/android.hardware.audio.service"
     "etc/init/android.hardware.audio.service.rc"
     "lib/android.hardware.audio.common-util.so"

@@ -259,7 +259,7 @@ vendor/etc/audio_effects_GSI.xml
 vendor/etc/audio_io_policy.conf
 vendor/etc/audio_platform_info.xml
 vendor/etc/audio_platform_info_qrd.xml
-vendor/etc/audio_policy_configuration_ZS630KL.xml
+vendor/etc/audio_tuning_mixer.txt
 vendor/etc/audio_tuning_mixer_tavil.txt
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/camera/vidhance_calibration
@@ -303,7 +303,6 @@ vendor/etc/configstore/wigig.xml
 vendor/etc/data/dsi_config.xml
 vendor/etc/data/netmgr_config.xml
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
-vendor/etc/default_volume_tables.xml
 vendor/etc/devcfg_tzOn.mbn
 vendor/etc/dts/GEQ_configs
 vendor/etc/dts/acc/d30de3a0-b177-4822-9c15-816b79545f82_usb_44.bin
@@ -599,7 +598,6 @@ vendor/etc/qxdm/DIAG_R28_NRT.cfg
 vendor/etc/qxdm/Qualcomm_Default.cfg
 vendor/etc/qxdm/Qualcomm_Default_plusAS.cfg
 vendor/etc/qxdm/SNS.cfg
-vendor/etc/r_submix_audio_policy_configuration.xml
 vendor/etc/rstg2k.sh
 vendor/etc/rstgy2k.sh
 vendor/etc/sap.conf
