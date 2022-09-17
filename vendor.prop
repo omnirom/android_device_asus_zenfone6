@@ -151,6 +151,9 @@ ro.asus.audio.realStereo=true
 ro.asus.aw.settingentry=1
 ro.audio.monitorRotation=true
 
+# Audio
+ro.config.vc_call_vol_steps=7
+
 # Chipset
 ro.soc.manufacturer=QTI
 ro.soc.model=SM8150
