@@ -30,6 +30,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     FrameworksResDeviceOverlay \
+    SystemUIOverlay \
     TetheringConfigOverlay \
     WifiOverlay
 
