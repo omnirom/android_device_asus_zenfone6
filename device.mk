@@ -45,6 +45,31 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.soundtrigger@2.1-impl
+
+PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
+    audio.primary.msmnile \
+    audio.r_submix.default \
+    audio.usb.default
+
+PRODUCT_PACKAGES += \
+    liba2dpoffload \
+    libbatterylistener \
+    libcomprcapture \
+    libexthwplugin \
+    libhdmiedid \
+    libsndmonitor \
+    libspkrprot \
+    libaudio-resampler \
+    libaudioroute \
+    libssrec \
+    libtinycompress \
+    tinymix
+
 # DeviceParts
 PRODUCT_PACKAGES += \
     DeviceParts
