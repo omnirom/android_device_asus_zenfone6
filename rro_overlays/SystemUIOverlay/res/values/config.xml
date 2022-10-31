@@ -38,4 +38,7 @@
         wifi,cell,bt,flashlight,dnd,alarm,airplane,rotation,cast,screenrecord,mictoggle,cameratoggle,nfc,location,hotspot,inversion,saver,dark,work,night,reverse,reduce_brightness
     </string>
 
+    <!-- Doze: does this device support STATE_DOZE?  -->
+    <bool name="doze_display_state_supported">true</bool>
+
 </resources>
