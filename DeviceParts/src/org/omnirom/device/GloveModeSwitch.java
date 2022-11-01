@@ -28,7 +28,7 @@ public class GloveModeSwitch implements OnPreferenceChangeListener {
 
     private static final String FILE = "/proc/driver/glove";
 
-    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_GLOVE_SWITCH;
+    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + GestureSettings.KEY_GLOVE_SWITCH;
 
     private Context mContext;
 

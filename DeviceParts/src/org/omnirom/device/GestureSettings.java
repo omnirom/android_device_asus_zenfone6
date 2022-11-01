@@ -73,6 +73,8 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String KEY_V_APP = "v_gesture_app";
     public static final String KEY_W_APP = "w_gesture_app";
     public static final String KEY_Z_APP = "z_gesture_app";
+
+    public static final String KEY_GLOVE_SWITCH = "glove";
     public static final String KEY_SMART_SIMPLE = "smart_simple";
     public static final String KEY_SMART_LONG = "smart_long";
     public static final String KEY_SMART_KEY = "smart_key";
@@ -92,6 +94,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String DEVICE_GESTURE_MAPPING_7 = "device_gesture_mapping_7_0";
     public static final String DEVICE_GESTURE_MAPPING_8 = "device_gesture_mapping_8_0";
 
+    private TwoStatePreference mGloveModeSwitch;
     private TwoStatePreference mProxiSwitch;
     private TwoStatePreference mSmartKeySwitch;
     private TwoStatePreference mSwipeUpSwitch;
@@ -121,6 +124,11 @@ public class GestureSettings extends PreferenceFragment implements
         mProxiSwitch = (TwoStatePreference) findPreference(KEY_PROXI_SWITCH);
         mProxiSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
                 Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1) != 0);
+
+        mGloveModeSwitch = (TwoStatePreference) findPreference(KEY_GLOVE_SWITCH);
+        mGloveModeSwitch.setEnabled(GloveModeSwitch.isSupported());
+        mGloveModeSwitch.setChecked(GloveModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mGloveModeSwitch.setOnPreferenceChangeListener(new GloveModeSwitch(getContext()));
 
         mSmartKeySwitch = (TwoStatePreference) findPreference(KEY_SMART_KEY);
         mSmartKeySwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),

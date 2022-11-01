@@ -23,6 +23,16 @@
         android:defaultValue="true" />
 
     <PreferenceCategory
+        android:key="screen"
+        android:title="@string/screen_title">
+        <SwitchPreference
+            android:key="glove"
+            android:summary="@string/glove_mode_summary"
+            android:title="@string/glove_mode_title"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/fp_gesture_title"
         android:key="key_fp_gesture_category" >
 
