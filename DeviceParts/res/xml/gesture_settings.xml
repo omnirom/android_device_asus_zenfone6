@@ -33,16 +33,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/fp_gesture_title"
-        android:key="key_fp_gesture_category" >
-
-        <org.omnirom.device.AppSelectListPreference
-            android:key="fp_long_press_gesture_app"
-            android:title="@string/category_fp_long_press_gesture"
-            android:persistent="false"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:title="@string/smart_google">
 
         <SwitchPreference

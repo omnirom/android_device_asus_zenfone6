@@ -78,7 +78,6 @@ public class KeyHandler implements DeviceKeyHandler {
     protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
 
-    private static final int FP_GESTURE_LONG_PRESS = 187;
     private static final int KEY_DOUBLE_TAP = 143;
     private static final int KEY_HOME = 102;
     private static final int KEY_BACK = 158;
@@ -98,15 +97,14 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int HANDWAVE_MAX_DELTA_MS = 1000;
     private static final int POCKET_MIN_DELTA_MS = 5000;
     private static final long SMARTKEY_DELAY_MILLIS = 300;
-
+    private static final long FP_LONGPRESS_DELAY_MILLIS = 1000;
 
     private static final String DT2W_CONTROL_PATH = "/proc/driver/dclick";
     private static final String GOODIX_CONTROL_PATH = "/sys/devices/platform/soc/soc:goodixfp/proximity_state";
 
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
-        KEY_GOOGLE_APP,
-        FP_GESTURE_LONG_PRESS
+        KEY_GOOGLE_APP
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
@@ -555,10 +553,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private String getGestureValueForFPScanCode(int scanCode, long eventTime) {
         long now = SystemClock.uptimeMillis();
-        if (FP_GESTURE_LONG_PRESS == scanCode) {
-            return Settings.System.getStringForUser(mContext.getContentResolver(),
-                   GestureSettings.DEVICE_GESTURE_MAPPING_0, UserHandle.USER_CURRENT);
-        }
         if (KEY_GOOGLE_APP == scanCode) {
             if (now <= eventTime + SMARTKEY_DELAY_MILLIS) {
                 return Settings.System.getStringForUser(mContext.getContentResolver(),
