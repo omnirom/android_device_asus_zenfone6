@@ -98,7 +98,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int HANDWAVE_MAX_DELTA_MS = 1000;
     private static final int POCKET_MIN_DELTA_MS = 5000;
     private static final long SMARTKEY_DELAY_MILLIS = 300;
-
+    private static final long FP_LONGPRESS_DELAY_MILLIS = 1000;
 
     private static final String DT2W_CONTROL_PATH = "/proc/driver/dclick";
     private static final String GOODIX_CONTROL_PATH = "/sys/devices/platform/soc/soc:goodixfp/proximity_state";
@@ -555,7 +555,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private String getGestureValueForFPScanCode(int scanCode, long eventTime) {
         long now = SystemClock.uptimeMillis();
-        if (FP_GESTURE_LONG_PRESS == scanCode) {
+        if ((FP_GESTURE_LONG_PRESS == scanCode) && (now >= eventTime + FP_LONGPRESS_DELAY_MILLIS)){
             return Settings.System.getStringForUser(mContext.getContentResolver(),
                    GestureSettings.DEVICE_GESTURE_MAPPING_0, UserHandle.USER_CURRENT);
         }
