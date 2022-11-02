@@ -42,4 +42,18 @@
         </Preference>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="category_motor"
+        android:title="@string/camera_retraction_category">
+        <Preference
+            android:key="camera_angle_manager"
+            android:title="@string/calibrate_camera_angle_title"
+            android:summary="@string/calibrate_camera_angle_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.asus.motork"
+                android:targetClass="com.asus.motork.MainActivity" />
+        </Preference>
+    </PreferenceCategory>
+
 </PreferenceScreen>

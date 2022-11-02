@@ -95,4 +95,8 @@
     <string name="volume_mode">Sound</string>
     <string name="vibrate_mode">Vibrate</string>
     <string name="mute_mode">Mute</string>
+
+    <string name="camera_retraction_category">Camera retraction</string>
+    <string name="calibrate_camera_angle_title">Calibrate camera angle</string>
+    <string name="calibrate_camera_angle_summary">When the flip angle of the camera is abnormal, calibrate the camera to restore to its original position</string>
 </resources>
