@@ -19,7 +19,7 @@ package org.omnirom.device;
 
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
@@ -27,7 +27,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class AudioSettings extends PreferenceFragment implements
+public class AudioSettings extends PreferenceFragmentCompat implements
         Preference.OnPreferenceChangeListener {
 
     private static final String TAG = "AudioWizardControllerOmni";
