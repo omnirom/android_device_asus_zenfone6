@@ -20,6 +20,13 @@ system_ext/etc/permissions/audiosphere.xml
 lib/DataSet/ispDB/ASUS_UNDI.bin
 lib/DataSet/ispDB/ASUS_UNDI_ZOOM.bin
 lib/DataSet/ispDB/ParameterDB.db
+lib64/libxditk_arch.so
+lib64/libxditk_DIT_Manager.so
+lib64/libxditk_DIT_MSMv1.so
+lib64/libxditk_ditArchLIB.so
+lib64/libxditk_ditBSP.so
+lib64/libxditk_ditBSP_JNI.so
+lib64/libxditk_ISP.so
 -priv-app/AsusCamera/AsusCamera.apk
 priv-app/AsusCamera/lib/arm64/libarcsoft_distortion_correction.so
 priv-app/AsusCamera/lib/arm64/libarcsoft_object_tracking.so
