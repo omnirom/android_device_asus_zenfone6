@@ -3,8 +3,6 @@
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
 # Audio
-lib64/libaptX_encoder.so|9e87fed4eac0e9fe428eaf8d0db7a1af89d521e1
-lib64/libaptXHD_encoder.so|043c055498f6e6e2b0564ad35ea17b012844cbce
 system_ext/etc/cdma_call_conf.xml
 system_ext/lib64/libadsprpc_system.so
 system_ext/lib64/libcdsprpc_system.so
@@ -12,7 +10,6 @@ system_ext/lib64/libmdsprpc_system.so
 system_ext/lib64/libsdsprpc_system.so
 
 # Bluetooth
--app/aptxals/aptxals.apk
 system_ext/etc/permissions/audiosphere.xml
 -system_ext/framework/audiosphere.jar
 
