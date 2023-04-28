@@ -2375,6 +2375,11 @@
         <ctl name="DK Profile" value="speaker" />
     </path>
 
+    <path name="speaker-voip">
+        <ctl name="TFA_Selector Speaker" value="1" />
+        <ctl name="DK Profile" value="receiver" />
+    </path>
+
     <path name="speaker-for-ringtone">
         <path name="speaker" />
     </path>
@@ -3319,7 +3324,7 @@
     </path>
 
     <path name="speaker-for-voip">
-        <path name="speaker-mono-2" />
+        <path name="speaker-voip" />
     </path>
     <!-- VOIP CALL END-->
 

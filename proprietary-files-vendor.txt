@@ -492,7 +492,6 @@ vendor/etc/media_codecs_vendor_audio.xml
 vendor/etc/media_profiles.xml
 vendor/etc/media_profiles_vendor.xml
 vendor/etc/mixer_paths_pahu.xml
-vendor/etc/mixer_paths_tavil.xml
 vendor/etc/mkshrc
 vendor/etc/msm_irqbalance.conf
 vendor/etc/perf/commonresourceconfigs.xml
