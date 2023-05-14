@@ -1,1 +1,2 @@
 allow asus_sp asusfw_file:file rw_file_perms;
+allow asus_sp devinfo_block_device:blk_file rw_file_perms;
