@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <android-base/file.h>
 #include <android-base/properties.h>
 #include <android-base/logging.h>
 #include "property_service.h"
@@ -37,11 +38,16 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
+#define CUSTOMER_FILE "mnt/vendor/persist/CUSTOMER"
+#define IDCODE_FILE "mnt/vendor/persist/COLOR"
+#define VARIANT_FILE "mnt/vendor/persist/COUNTRY"
+
 namespace android {
 namespace init {
 
 using android::base::GetProperty;
-using ::android::base::SetProperty;
+using android::base::ReadFileToString;
+using android::base::SetProperty;
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -58,6 +64,13 @@ void property_override(const std::string& name, const std::string& value)
                        << "__system_property_add failed";
         }
     }
+}
+
+void property_override_dual(char const prop[], char const system_prop[],
+    const std::string& value)
+{
+    property_override(prop, value);
+    property_override(system_prop, value);
 }
 
 /* From Magisk@jni/magiskhide/hide_utils.c */
@@ -89,11 +102,91 @@ static const char *snet_prop_key[] = {
     }
 }
 
+static void set_configs()
+{
+    std::string variantValue;
+
+    if (ReadFileToString(CUSTOMER_FILE, &variantValue)) {
+        property_override("ro.config.CID", variantValue.c_str());
+    }
+    if (ReadFileToString(IDCODE_FILE, &variantValue)) {
+        property_override("ro.config.idcode", variantValue.c_str());
+    }
+    if (ReadFileToString(VARIANT_FILE, &variantValue)) {
+        property_override("ro.config.versatility", variantValue.c_str());
+    }
+}
+
+static void set_fingerprint()
+{
+    std::string build_asus;
+    std::string build_id;
+    std::string build_number;
+    std::ostringstream fp;
+    std::string fingerprint;
+    std::string name;
+    std::string variant;
+    std::ostringstream desc;
+    std::string description;
+    std::ostringstream disp;
+    std::string display_id;
+
+    LOG(INFO) << "Starting custom init";
+
+    variant = android::base::GetProperty("ro.config.versatility", "");
+
+    // Set the default "name" string
+    if (variant == "EU") {
+        property_override("ro.product.vendor.name", "EU_I001D");
+    } else if (variant == "RU") {
+        property_override("ro.product.vendor.name", "RU_I001D");
+    }
+
+    name = android::base::GetProperty("ro.product.vendor.name", "");
+
+    LOG(INFO) << name;
+
+    // These should be the only things to change for OTA updates
+    build_asus = "18.0610.2106.156";
+    build_id = "RKQ1.200710.002";
+    build_number = "18.0610.2106.156-0";
+
+    // Create the correct stock props based on the above values
+    desc << name << "-user 11 " << build_id << " " << build_number << " release-keys";
+    description = desc.str();
+
+    disp << build_id << ".WW_Phone-" << build_number;
+    display_id = disp.str();
+
+    fp << "asus/" << name << "/ASUS_I01WD:11/" << build_id << "/" << build_number << ":user/release-keys";
+    fingerprint = fp.str();
+
+    // Set below properties based on variant name
+    if (name == "EU_I001D") {
+        property_override("ro.product.carrier", "ASUS-ASUS_I01WD-EU");
+    } else if (name == "RU_I001D") {
+        property_override("ro.product.carrier", "ASUS-ZS630KL-RU");
+        property_override("ro.product.vendor.model", "ZS630KL");
+    } else if (name == "WW_I001D") {
+        property_override("ro.product.carrier", "ASUS-ASUS_I01WD-WW");
+    }
+
+    // These properties are the same for all variants
+    property_override("ro.build.asus.number", build_number);
+    property_override("ro.build.asus.version", build_asus);
+    property_override("ro.build.description", description);
+    property_override("ro.build.display.id", display_id);
+    property_override("ro.vendor.asus.build.fp", fingerprint);
+    property_override_dual("ro.build.fingerprint", "ro.system.build.fingerprint", fingerprint);
+}
+
 void vendor_load_properties()
 {
     // SafetyNet workaround
     property_override("ro.boot.verifiedbootstate", "green");
     workaround_snet_properties();
+    set_configs();
+    set_fingerprint();
 }
 
 } //init
