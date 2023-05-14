@@ -7,3 +7,7 @@
 /(vendor|system/vendor)/etc/check_rcvcal.sh                                                            u:object_r:asus_record_exec:s0
 /(vendor|system/vendor)/etc/check_spkcal.sh                                                            u:object_r:asus_record_exec:s0
 /(vendor|system/vendor)/etc/SpeakerCalibrationTest                                                     u:object_r:asus_record_exec:s0
+
+# Devinfo
+/dev/block/sde1                                                                                        u:object_r:devinfo_block_device:s0
+/(vendor|system/vendor)/bin/devinfo                                                                    u:object_r:devinfo_exec:s0
