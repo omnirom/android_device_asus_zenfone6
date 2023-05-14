@@ -1,0 +1,16 @@
+type devinfo, domain;
+type devinfo_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(devinfo)
+
+allow devinfo block_device:dir search;
+allow devinfo devinfo_block_device:blk_file rw_file_perms;
+allowxperm devinfo devinfo_block_device:blk_file ioctl  { 0x1260 };
+
+get_prop(devinfo, bootloader_prop)
+get_prop(devinfo, exported_config_prop)
+get_prop(devinfo, exported_default_prop)
+get_prop(devinfo, fingerprint_prop)
+get_prop(devinfo, vendor_asus_prop)
+get_prop(devinfo, vendor_asus_sp_prop)
