@@ -137,9 +137,9 @@ static void set_fingerprint()
 
     // Set the default "name" string
     if (variant == "EU") {
-        property_override("ro.product.vendor.name", "EU_I001D");
+        property_override("ro.product.vendor.name", "EU_I01WD");
     } else if (variant == "RU") {
-        property_override("ro.product.vendor.name", "RU_I001D");
+        property_override("ro.product.vendor.name", "RU_I01WD");
     }
 
     name = android::base::GetProperty("ro.product.vendor.name", "");
@@ -162,12 +162,12 @@ static void set_fingerprint()
     fingerprint = fp.str();
 
     // Set below properties based on variant name
-    if (name == "EU_I001D") {
+    if (name == "EU_I01WD") {
         property_override("ro.product.carrier", "ASUS-ASUS_I01WD-EU");
-    } else if (name == "RU_I001D") {
+    } else if (name == "RU_I01WD") {
         property_override("ro.product.carrier", "ASUS-ZS630KL-RU");
         property_override("ro.product.vendor.model", "ZS630KL");
-    } else if (name == "WW_I001D") {
+    } else if (name == "WW_I01WD") {
         property_override("ro.product.carrier", "ASUS-ASUS_I01WD-WW");
     }
 
