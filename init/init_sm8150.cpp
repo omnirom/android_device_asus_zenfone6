@@ -73,6 +73,19 @@ void property_override_dual(char const prop[], char const system_prop[],
     property_override(system_prop, value);
 }
 
+constexpr const char* RO_PROP_SOURCES[] = {
+    nullptr,
+    "bootimage.",
+    "odm.",
+    "odm_dlkm.",
+    "product.",
+    "system.",
+    "system_dlkm.",
+    "system_ext.",
+    "vendor.",
+    "vendor_dlkm.",
+};
+
 /* From Magisk@jni/magiskhide/hide_utils.c */
 static const char *snet_prop_key[] = {
     "ro.boot.vbmeta.device_state",
@@ -108,16 +121,19 @@ static void set_configs()
 
     if (ReadFileToString(CUSTOMER_FILE, &variantValue)) {
         property_override("ro.config.CID", variantValue.c_str());
+        property_override("ro.vendor.config.CID", variantValue.c_str());
     }
     if (ReadFileToString(IDCODE_FILE, &variantValue)) {
         property_override("ro.config.idcode", variantValue.c_str());
+        property_override("ro.vendor.config.idcode", variantValue.c_str());
     }
     if (ReadFileToString(VARIANT_FILE, &variantValue)) {
         property_override("ro.config.versatility", variantValue.c_str());
+        property_override("ro.vendor.config.versatility", variantValue.c_str());
     }
 }
 
-static void set_fingerprint()
+static void set_description()
 {
     std::string build_asus;
     std::string build_id;
@@ -177,7 +193,22 @@ static void set_fingerprint()
     property_override("ro.build.description", description);
     property_override("ro.build.display.id", display_id);
     property_override("ro.vendor.asus.build.fp", fingerprint);
-    property_override_dual("ro.build.fingerprint", "ro.system.build.fingerprint", fingerprint);
+}
+
+void set_fingerprint() {
+    const auto ro_prop_override = [](const char* source, const char* prop, const char* value) {
+        std::string prop_name = "ro.";
+
+        if (source != nullptr) prop_name += source;
+        prop_name += "build.";
+        prop_name += prop;
+
+        property_override(prop_name.c_str(), value);
+    };
+
+    for (const auto& source : RO_PROP_SOURCES) {
+        ro_prop_override(source, "fingerprint", fingerprint);
+    }
 }
 
 void vendor_load_properties()
@@ -186,6 +217,7 @@ void vendor_load_properties()
     property_override("ro.boot.verifiedbootstate", "green");
     workaround_snet_properties();
     set_configs();
+    set_description();
     set_fingerprint();
 }
 
