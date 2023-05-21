@@ -1,5 +1,12 @@
 [
    {
+    "remote": "gitlab",
+    "repository": "android_hardware_qcom_audio-sm8150",
+    "target_path": "hardware/qcom-caf/sm8150/audio",
+    "override": "platform/hardware/qcom/audio",
+    "revision": "android-13.0"
+   },
+   {
     "remote": "omnirom",
     "repository": "android_device_asus_sm8150-common",
     "target_path": "device/asus/sm8150-common",
