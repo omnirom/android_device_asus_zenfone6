@@ -241,4 +241,18 @@
         <item>1</item> <!-- COLOR_MODE_BOOSTED -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
+
+    <!-- Vibrator pattern for feedback about a long screen/key press -->
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about touching a virtual key -->
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>30</item>
+    </integer-array>
+
 </resources>
