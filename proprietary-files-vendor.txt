@@ -249,11 +249,8 @@ vendor/etc/acdbdata/QRD/QRD_Speaker_cal.acdb
 vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
 vendor/etc/apdr.conf
-vendor/etc/audio_configs.xml
-vendor/etc/audio_configs_stock.xml
 vendor/etc/audio_effects.conf
 vendor/etc/audio_effects.xml
-vendor/etc/audio_effects_GSI.xml
 vendor/etc/audio_platform_info.xml
 vendor/etc/audio_platform_info_qrd.xml
 vendor/etc/audio_tuning_mixer.txt
@@ -1056,8 +1053,6 @@ vendor/lib/hw/android.hardware.soundtrigger@2.1-impl.so
 vendor/lib/hw/audio.bluetooth.default.so
 vendor/lib/hw/audio.bluetooth_qti.default.so
 vendor/lib/hw/audio.primary.msmnile.so
-vendor/lib/hw/audio.r_submix.default.so
-vendor/lib/hw/audio.usb.default.so
 vendor/lib/hw/camera.qcom.so
 vendor/lib/hw/com.dsi.ant@1.0-impl.so
 vendor/lib/hw/com.qti.chi.override.so
@@ -1145,7 +1140,6 @@ vendor/lib/libTrustedInput.so
 vendor/lib/libTrustedInputTZ.so
 vendor/lib/libTrustedUI.so
 vendor/lib/libVkLayer_q3dtools.so
-vendor/lib/liba2dpoffload.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -1156,7 +1150,6 @@ vendor/lib/libadreno_app_profiles.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libadsp_default_listener.so
 vendor/lib/libadsprpc.so
-vendor/lib/libalsautils.so
 vendor/lib/libaoa.so
 vendor/lib/libarbitrarybytes.so
 vendor/lib/libarcsoft_beautyshot.so
@@ -1180,7 +1173,6 @@ vendor/lib/libaudioconfigstore.so
 vendor/lib/libaudioparsers.so
 vendor/lib/libbase64.so
 vendor/lib/libbatching.so
-vendor/lib/libbatterylistener.so
 vendor/lib/libbluetooth_audio_session.so
 vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/libboot_control_qti.so
@@ -1202,7 +1194,6 @@ vendor/lib/libcapiv2vop.so
 vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcdsprpc.so
 vendor/lib/libchrome.so
-vendor/lib/libcirrusspkrprot.so
 vendor/lib/libcld80211.so
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
@@ -1211,7 +1202,6 @@ vendor/lib/libcneqmiutils.so
 vendor/lib/libcodec2_hidl@1.0.so
 vendor/lib/libcodec2_vndk.so
 vendor/lib/libcom.qti.chinodeutils.so
-vendor/lib/libcomprcapture.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcpion.so
 vendor/lib/libcppf.so
@@ -1235,7 +1225,6 @@ vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libdts-eagle-shared.so
 vendor/lib/libdtsdsec.so
-vendor/lib/libexthwplugin.so
 vendor/lib/libfastcrc.so
 vendor/lib/libfastcvdsp_stub.so
 vendor/lib/libfastcvopt.so
@@ -1259,10 +1248,8 @@ vendor/lib/libhbtpfrmwk.so
 vendor/lib/libhdcp1prov.so
 vendor/lib/libhdcp2p2prov.so
 vendor/lib/libhdcpsrm.so
-vendor/lib/libhdmiedid.so
 vendor/lib/libhdmipassthru.so
 vendor/lib/libhdr_tm.so
-vendor/lib/libhfp.so
 vendor/lib/libhidltransport.so
 vendor/lib/libhta_hexagon_runtime.so
 vendor/lib/libidl.so
@@ -1392,7 +1379,6 @@ vendor/lib/libskewknob.so
 vendor/lib/libslimclient.so
 vendor/lib/libsmemlog.so
 vendor/lib/libsmwrapper.so
-vendor/lib/libsndmonitor.so
 vendor/lib/libsns_device_mode_stub.so
 vendor/lib/libsns_fastRPC_util.so
 vendor/lib/libsns_low_lat_stream_stub.so
@@ -1401,7 +1387,6 @@ vendor/lib/libsnsapi.so
 vendor/lib/libsnsdiaglog.so
 vendor/lib/libsoc_helper.so
 vendor/lib/libsoc_helper_jni.so
-vendor/lib/libspkrprot.so
 vendor/lib/libspl.so
 vendor/lib/libssc.so
 vendor/lib/libssc_default_listener.so
@@ -1423,7 +1408,6 @@ vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/libthermalclient.so
 vendor/lib/libtime_genoff.so
-vendor/lib/libtinycompress.so
 vendor/lib/libtinyxml.so
 vendor/lib/libtinyxml2_1.so
 vendor/lib/libtrustedapploader.so
@@ -1756,8 +1740,6 @@ vendor/lib64/hw/android.hardware.renderscript@1.0-impl.so
 vendor/lib64/hw/audio.bluetooth.default.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/audio.primary.msmnile.so
-vendor/lib64/hw/audio.r_submix.default.so
-vendor/lib64/hw/audio.usb.default.so
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 vendor/lib64/hw/com.qti.chi.override.so
@@ -1842,7 +1824,6 @@ vendor/lib64/libTrustedInput.so
 vendor/lib64/libTrustedInputTZ.so
 vendor/lib64/libTrustedUI.so
 vendor/lib64/libVkLayer_q3dtools.so
-vendor/lib64/liba2dpoffload.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
@@ -1852,7 +1833,6 @@ vendor/lib64/libadreno_app_profiles.so
 vendor/lib64/libadreno_utils.so
 vendor/lib64/libadsp_default_listener.so
 vendor/lib64/libadsprpc.so
-vendor/lib64/libalsautils.so
 vendor/lib64/libaoa.so
 vendor/lib64/libappclassifier.so
 vendor/lib64/libarbitrarybytes.so
@@ -1877,7 +1857,6 @@ vendor/lib64/libaudioconfigstore.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libbase64.so
 vendor/lib64/libbatching.so
-vendor/lib64/libbatterylistener.so
 vendor/lib64/libbluetooth_audio_session.so
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libboot_control_qti.so
@@ -1901,7 +1880,6 @@ vendor/lib64/libcdfw_remote_api.so
 vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcdsprpc.so
 vendor/lib64/libchrome.so
-vendor/lib64/libcirrusspkrprot.so
 vendor/lib64/libcld80211.so
 vendor/lib64/libcne.so
 vendor/lib64/libcneapiclient.so
@@ -1910,7 +1888,6 @@ vendor/lib64/libcneqmiutils.so
 vendor/lib64/libcodec2_hidl@1.0.so
 vendor/lib64/libcodec2_vndk.so
 vendor/lib64/libcom.qti.chinodeutils.so
-vendor/lib64/libcomprcapture.so
 vendor/lib64/libconfigdb.so
 vendor/lib64/libcpion.so
 vendor/lib64/libcvp.so
@@ -1932,7 +1909,6 @@ vendor/lib64/libdsutils.so
 vendor/lib64/libdts-eagle-shared.so
 vendor/lib64/libdtsdsec.so
 vendor/lib64/libembmsservice.so
-vendor/lib64/libexthwplugin.so
 vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastcvopt.so
 vendor/lib64/libfastrpc_utf_stub.so
@@ -1959,11 +1935,9 @@ vendor/lib64/libhbtpfrmwk.so
 vendor/lib64/libhdcp1prov.so
 vendor/lib64/libhdcp2p2prov.so
 vendor/lib64/libhdcpsrm.so
-vendor/lib64/libhdmiedid.so
 vendor/lib64/libhdmipassthru.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libhexagon_nn_stub.so
-vendor/lib64/libhfp.so
 vendor/lib64/libhidltransport.so
 vendor/lib64/libhta_hexagon_runtime.so
 vendor/lib64/libhwc2on1adapter.so
@@ -2107,7 +2081,6 @@ vendor/lib64/libsi.so
 vendor/lib64/libskewknob.so
 vendor/lib64/libslimclient.so
 vendor/lib64/libsmemlog.so
-vendor/lib64/libsndmonitor.so
 vendor/lib64/libsns_device_mode_stub.so
 vendor/lib64/libsns_fastRPC_util.so
 vendor/lib64/libsns_low_lat_stream_stub.so
@@ -2117,7 +2090,6 @@ vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libsoc_helper.so
 vendor/lib64/libsoc_helper_jni.so
 vendor/lib64/libspcom.so
-vendor/lib64/libspkrprot.so
 vendor/lib64/libspl.so
 vendor/lib64/libssc.so
 vendor/lib64/libssc_default_listener.so
@@ -2134,7 +2106,6 @@ vendor/lib64/libsysmon_cdsp_skel.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/libtime_genoff.so
-vendor/lib64/libtinycompress.so
 vendor/lib64/libtinyxml.so
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/libtrustedapploader.so
