@@ -50,6 +50,7 @@ VENDOR_SKIP_FILES_COMMON=(
 
     # Audio
     "etc/audio/audio_policy_configuration.xml"
+    "etc/audio_platform_info.xml"
     "etc/audio_platform_info_qrd.xml"
     "etc/audio_io_policy.conf"
     "etc/audio_policy_configuration.xml"
