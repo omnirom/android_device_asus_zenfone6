@@ -1119,6 +1119,7 @@ vendor/lib/libTrustedInput.so
 vendor/lib/libTrustedInputTZ.so
 vendor/lib/libTrustedUI.so
 vendor/lib/libVkLayer_q3dtools.so
+vendor/lib/liba2dpoffload.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -1803,6 +1804,7 @@ vendor/lib64/libTrustedInput.so
 vendor/lib64/libTrustedInputTZ.so
 vendor/lib64/libTrustedUI.so
 vendor/lib64/libVkLayer_q3dtools.so
+vendor/lib64/liba2dpoffload.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
