@@ -4,5 +4,5 @@ PRODUCT_MAKEFILES := \
 
 COMMON_LUNCH_CHOICES := \
     omni_zenfone6-user \
-    omni_zenfone6-userdebug \
+    omni_zenfone6-trunk_staging-userdebug \
     omni_zenfone6-eng
