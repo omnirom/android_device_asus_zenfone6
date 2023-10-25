@@ -25,6 +25,8 @@ import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import org.omnirom.omnilib.utils.OmniSettings;
+
 public class Startup extends BroadcastReceiver {
     private static void restore(String file, boolean enabled) {
         if (file == null) {
@@ -90,7 +92,7 @@ public class Startup extends BroadcastReceiver {
         enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_SMART_KEY), enabled);
 
-        value = Settings.System.getString(context.getContentResolver(), Settings.System.OMNI_BUTTON_EXTRA_KEY_MAPPING);
+        value = Settings.System.getString(context.getContentResolver(), OmniSettings.OMNI_BUTTON_EXTRA_KEY_MAPPING);
         if (TextUtils.isEmpty(value)) {
             return;
         } else {
