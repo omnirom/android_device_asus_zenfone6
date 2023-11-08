@@ -8,7 +8,7 @@
 #<src>                                                 <mnt_point>            <type>  <mnt_flags and options>                            <fs_mgr_flags>
 /dev/block/by-name/system                               /system                ext4    ro,barrier=1,discard                                 wait,slotselect,avb,first_stage_mount
 /dev/block/by-name/vendor                               /vendor                ext4    ro,barrier=1,discard                                 wait,slotselect,avb,first_stage_mount
-/dev/block/bootdevice/by-name/metadata                  /metadata              ext4    noatime,nosuid,nodev,discard                         wait,formattable
+/dev/block/bootdevice/by-name/metadata                  /metadata              ext4    noatime,nosuid,nodev,discard                         wait,formattable,fsverity
 /dev/block/bootdevice/by-name/userdata                  /data                  f2fs     noatime,nosuid,nodev,discard,nobarrier        latemount,wait,check,fileencryption=ice,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M
 /devices/platform/soc/8804000.sdhci/mmc_host*           /storage/sdcard1      vfat    nosuid,nodev                                         wait,voldmanaged=sdcard1:auto
 /devices/platform/soc/1da4000.ufshc_card/host*          /storage/sdcard1       vfat    nosuid,nodev                                         wait,voldmanaged=sdcard1:auto
