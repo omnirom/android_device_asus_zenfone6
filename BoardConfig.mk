@@ -37,10 +37,8 @@ DEVICE_MATRIX_FILE += $(DEVICE_PATH)/manifest/compatibility_matrix.xml
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sm8150
 
 # Kernel
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/asus/sm8150
 TARGET_KERNEL_CONFIG := vendor/zs630kl_defconfig
-BOARD_BOOT_HEADER_VERSION := 1
 
 TARGET_MODULE_ALIASES += \
     wcd_cpe_dlkm.ko:audio_wcd_cpe.ko
