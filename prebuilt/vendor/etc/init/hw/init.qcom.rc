@@ -94,10 +94,6 @@ on early-boot
     chown system system /mnt/vendor/persist/data/pfm/licenses
     chmod 0775 /mnt/vendor/persist/data/pfm/licenses
 
-    # ASUS_BSP +++ ShowCai "For checking support front RGB or not"
-    #setprop ro.asus.screen.colortemp.enable 0
-    # ASUS_BSP --- ShowCai "For checking support front RGB or not"
-
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -213,21 +209,6 @@ on boot
 
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
-
-    #ASUS_BSP +++ ShowCai "Proximity/Light sensor"
-    chown system shell /sys/class/sensors/psensor/switch
-    chown system shell /sys/class/sensors/lsensor/switch
-    chown system shell /sys/class/sensors/frgbsensor/switch
-    chown system shell /sys/class/sensors/psensor/inf_cal
-    chown system shell /sys/class/sensors/psensor/hi_cal
-    chown system shell /sys/class/sensors/psensor/low_cal
-    chown system shell /sys/class/sensors/psensor/proxm
-    chown system shell /sys/class/sensors/psensor/load_cal
-    chown system shell /sys/class/sensors/psensor/selection
-    chown system shell /sys/class/sensors/lsensor/selection
-    chown system shell /sys/class/sensors/lsensor/cal
-    chown system shell /sys/class/sensors/lsensor/adc
-    #ASUS_BSP --- ShowCai "Proximity/Light sensor"
 
     # limit discard size to 128MB in order to avoid long IO latency
     write /sys/block/sda/queue/discard_max_bytes 134217728
@@ -390,10 +371,6 @@ on post-fs-data
     #Create dir for TUI
     mkdir /data/vendor/tui 0700 system drmrpc
 
-    #ASUS_BSP +++ ShowCai "Proximity/Light sensor"
-    write /sys/class/sensors/psensor/load_cal 1
-    #ASUS_BSP --- ShowCai "Proximity/Light sensor"
-
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
@@ -424,8 +401,7 @@ service vendor.ssr_setup /system/vendor/bin/ssr_setup
     disabled
 
 service vendor.ss_ramdump /system/vendor/bin/subsystem_ramdump
-#AS-K Set class as core to avoid be killed when Cryptfs running
-    class core
+    class main
     user system
     group system
     disabled
@@ -462,23 +438,8 @@ on property:persist.vendor.ssr.enable_ramdumps=1
     mkdir /data/vendor/ramdump_ssr 770 system system
     start vendor.ss_ramdump
 
-#AS-K SSR SAR and Modem Log Config - Stop ss_ramdump when ramdump disabled+
 on property:persist.vendor.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    stop vendor.ss_ramdump
-
-# yujoe tcpdump_warp service to save tcpdump to /sdcard
-service tcpdump-warp /system/bin/netlog.sh
-    class late_start
-    user root
-    group system
-    disabled
-    seclabel u:r:dumpstate:s0
-
-#AS-K yujoe Workaround for unable to get dsi hndl issue+
-on property:vendor.radio.restart.netmgrd=*
-    restart vendor.netmgrd
-#AS-K Workaround for unable to get dsi hndl issue-
 
 on property:persist.vendor.sys.rawdump_copy=1
     write /sys/kernel/dload/emmc_dload 1
@@ -523,29 +484,17 @@ service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
     user root
     oneshot
 
-# ASUS_BSP +++ shianliang "[Kirin][SIM]SYNC SIMCODE VALUE"
-service vendor.simcode /vendor/bin/sh /vendor/bin/parse.simcode.sh
-    class main
-    user root
-    group root
-    oneshot
-# ASUS_BSP --- shianliang "[Kirin][SIM]SYNC SIMCODE VALUE"
-
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
 
 on property:vold.decrypt=trigger_restart_framework
-    start vendor.simcode
     start qcom-c_main-sh
     start wcnss-service
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
-
-on property:persist.vendor.radio.multisim.config=*
-    setprop persist.radio.multisim.config ${persist.vendor.radio.multisim.config}
 
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     class core
@@ -876,8 +825,7 @@ on property:sys.qbcharger.enable=true
 on property:sys.qbcharger.enable=false
     stop qbcharger
 
-#AS-K SSR SAR and Modem Log Config - Add -c to Send mask cleanup to modem at exit+
-service diag_mdlog_start /system/vendor/bin/diag_mdlog -c
+service diag_mdlog_start /system/vendor/bin/diag_mdlog
     class late_start
     user shell
     group system oem_2901 sdcard_rw sdcard_r media_rw
@@ -890,57 +838,6 @@ service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
     group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
-
-#AS-K SSR SAR and Modem Log Config+
-# config subsystem restart
-on property:persist.vendor.modem.restart=*
-    restart vendor.ssr_cfg
-
-service vendor.ssr_cfg /system/vendor/bin/sh /system/vendor/bin/ssr_cfg.sh
-#Set class as core to avoid be killed when Cryptfs running
-    class core
-    user system
-    group system
-    disabled
-    oneshot
-
-on property:vendor.asus.sar.audio=*
-    restart vendor.sar_setting
-
-on property:vendor.asus.sar.data=*
-    restart vendor.sar_setting
-
-on property:vendor.asus.sar.lte0=*
-    restart vendor.sar_setting
-
-on property:vendor.asus.sar.lte1=*
-    restart vendor.sar_setting
-
-on property:vendor.wlan.softap.driver.status=*
-    restart vendor.sar_setting
-
-on property:vendor.wigig.driver.status=*
-    restart vendor.sar_setting
-
-service vendor.sar_setting /system/vendor/bin/sar_setting
-#Set class as core to avoid be killed when Cryptfs running
-    class core
-    user radio
-    group radio
-    disabled
-    oneshot
-
-#Control by Property - Enable Modem Log
-on property:persist.vendor.asus.qxdmlog.enable=1
-   #insmod /system/lib/modules/diagchar.ko
-   restart diag_mdlog_start
-   write /proc/driver/UTSstatus  3
-
-#Control by Property - Disable Modem Log
-on property:persist.vendor.asus.qxdmlog.enable=0
-   start diag_mdlog_stop
-   write /proc/driver/UTSstatus 2
-#AS-K SSR SAR and Modem Log Config-
 
 service qlogd /system/xbin/qlogd
     socket qlogd stream 0662 system system
@@ -1068,13 +965,6 @@ service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.andro
 #Set GPU Opengles version
 on property:vendor.opengles.version=*
     setprop ro.opengles.version ${vendor.opengles.version}
-
-#ASUS_BSP Byron Add for laser use
-service vl53l1_daemon_main /vendor/bin/vl53l1_daemon_main
-    class late_start
-    user root
-    group root
-    socket vl53l1_daemon stream 660 root system
 
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
