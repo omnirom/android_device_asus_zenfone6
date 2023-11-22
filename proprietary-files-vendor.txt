@@ -122,7 +122,6 @@ vendor/bin/init.qcom.early_boot.sh
 vendor/bin/init.qcom.efs.sync.sh
 vendor/bin/init.qcom.post_boot.sh
 vendor/bin/init.qcom.sdio.sh
-vendor/bin/init.qcom.sh
 vendor/bin/init.qcom.usb.sh
 vendor/bin/init.qti.chg_policy.sh
 vendor/bin/init.qti.dcvs.sh
