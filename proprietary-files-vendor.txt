@@ -74,7 +74,6 @@ vendor/bin/hdcp2p2prov
 vendor/bin/hvdcp_opti
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
-vendor/bin/hw/android.hardware.boot@1.1-service
 vendor/bin/hw/android.hardware.camera.provider@2.4-service_64
 vendor/bin/hw/android.hardware.cas@1.2-service
 vendor/bin/hw/android.hardware.configstore@1.1-service
@@ -369,7 +368,6 @@ vendor/etc/hbtp/qtc801s.bin
 vendor/etc/init.qti.fm.sh
 vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/etc/init/android.hardware.boot@1.1-service.rc
 vendor/etc/init/android.hardware.camera.provider@2.4-service_64.rc
 vendor/etc/init/android.hardware.cas@1.2-service.rc
 vendor/etc/init/android.hardware.configstore@1.1-service.rc
@@ -720,7 +718,6 @@ vendor/etc/system_properties.xml
 vendor/etc/thermal-engine.conf
 vendor/etc/usb_audio_policy_configuration.xml
 -vendor/etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml
--vendor/etc/vintf/manifest/android.hardware.boot@1.1.xml
 -vendor/etc/vintf/manifest/android.hardware.cas@1.2-service.xml
 -vendor/etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml
 -vendor/etc/vintf/manifest/android.hardware.health@2.1.xml
@@ -1018,7 +1015,6 @@ vendor/lib/ftm_fm_lib.so
 vendor/lib/hal_libnfc.so
 vendor/lib/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib/hw/android.hardware.boot@1.0-impl-1.1-qti.so
 vendor/lib/hw/android.hardware.broadcastradio@1.0-impl.so
 vendor/lib/hw/android.hardware.camera.provider@2.4-impl.so
 vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
@@ -1154,7 +1150,6 @@ vendor/lib/libbase64.so
 vendor/lib/libbatching.so
 vendor/lib/libbluetooth_audio_session.so
 vendor/lib/libbluetooth_audio_session_qti.so
-vendor/lib/libboot_control_qti.so
 vendor/lib/libbt-hidlclient.so
 vendor/lib/libbtnv.so
 vendor/lib/libc2d30_bltlib.so
@@ -1707,7 +1702,6 @@ vendor/lib64/ftm_fm_lib.so
 vendor/lib64/hal_libnfc.so
 vendor/lib64/hw/android.hardware.bluetooth.audio@2.0-impl.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/hw/android.hardware.boot@1.0-impl-1.1-qti.so
 vendor/lib64/hw/android.hardware.broadcastradio@1.0-impl.so
 vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
@@ -1839,7 +1833,6 @@ vendor/lib64/libbase64.so
 vendor/lib64/libbatching.so
 vendor/lib64/libbluetooth_audio_session.so
 vendor/lib64/libbluetooth_audio_session_qti.so
-vendor/lib64/libboot_control_qti.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
 vendor/lib64/libc2d30_bltlib.so

@@ -387,6 +387,15 @@ VENDOR_SKIP_FILES_COMMON=(
     "bin/yes"
     "bin/zcat"
 
+    # boot
+    "bin/hw/android.hardware.boot@1.1-service"
+    "etc/init/android.hardware.boot@1.1-service.rc"
+    "etc/vintf/manifest/android.hardware.boot@1.1.xml"
+    "lib/hw/android.hardware.boot@1.0-impl-1.1-qti.so"
+    "lib64/hw/android.hardware.boot@1.0-impl-1.1-qti.so"
+    "lib/libboot_control_qti.so"
+    "lib64/libboot_control_qti.so"
+
     # build.prop for Region specific 
     "build_eu.prop"
     "build_ru.prop"
@@ -803,7 +812,6 @@ function as_module() {
 presign "app/com.qualcomm.qti.gpudrivers.lahaina.api30/com.qualcomm.qti.gpudrivers.lahaina.api30.apk"
 
 as_module "etc/vintf/manifest/android.hardware.biometrics.fingerprint@2.1-service.xml"
-as_module "etc/vintf/manifest/android.hardware.boot@1.1.xml"
 as_module "etc/vintf/manifest/android.hardware.cas@1.2-service.xml"
 as_module "etc/vintf/manifest/android.hardware.gnss@2.1-service-qti.xml"
 as_module "etc/vintf/manifest/android.hardware.health@2.1.xml"
