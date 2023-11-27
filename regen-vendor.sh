@@ -525,6 +525,11 @@ VENDOR_SKIP_FILES_COMMON=(
     "lib/libqservice.so"
     "lib64/libqservice.so"
 
+    # DRM
+    "bin/hw/android.hardware.drm@1.3-service.clearkey"
+    "etc/init/android.hardware.drm@1.3-service.clearkey.rc"
+    "etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml"
+
     # Fstab
     "etc/fstab.qcom"
 
@@ -874,7 +879,6 @@ as_module "etc/vintf/manifest/android.hardware.sensors@2.0-multihal.xml"
 as_module "etc/vintf/manifest/android.hardware.thermal@2.0-service.qti.xml"
 as_module "etc/vintf/manifest/android.hardware.usb@1.0-service.xml"
 as_module "etc/vintf/manifest/android.hardware.wifi.hostapd.xml"
-as_module "etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.clearkey.xml"
 as_module "etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml"
 as_module "etc/vintf/manifest/vendor.qti.gnss@4.0-service.xml"
 as_module "etc/vintf/manifest/vendor.qti.hardware.vibrator.service.xml"
