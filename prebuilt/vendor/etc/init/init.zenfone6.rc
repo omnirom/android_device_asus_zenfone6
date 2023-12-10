@@ -13,14 +13,14 @@ service vendor.drm-widevine-hal-1-3 /vendor/bin/hw/android.hardware.drm@1.3-serv
     user media
     group media mediadrm drmrpc system
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
 
 service neuralnetworks_hal_service /vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-qti
     override
     class hal
     user system
     group system
-    writepid /dev/stune/nnapi-hal/tasks
+    task_profiles NNApiHALPerformance
 
 service vendor-qti-media-c2-hal-1-0 /vendor/bin/hw/vendor.qti.media.c2@1.0-service
     override
@@ -28,13 +28,13 @@ service vendor-qti-media-c2-hal-1-0 /vendor/bin/hw/vendor.qti.media.c2@1.0-servi
     user mediacodec
     group mediadrm camera drmrpc system
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
 
 service vendor.sensors-hal-2-0-multihal /vendor/bin/hw/android.hardware.sensors@2.0-service.multihal
     override
     class hal
     user system
     group system wakelock context_hub input
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
     capabilities BLOCK_SUSPEND
     rlimit rtprio 10 10
