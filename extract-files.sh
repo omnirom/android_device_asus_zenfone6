@@ -56,6 +56,15 @@ if [ -z "$SRC" ]; then
     SRC=adb
 fi
 
+function blob_fixup() {
+    case "${1}" in
+    # Add shim for missing symbol in lib-imsvt.so
+    system_ext/lib64/lib-imsvideocodec.so)
+        ${PATCHELF} --add-needed "libgui_shim.so" "${2}"
+        ;;
+    esac
+}
+
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT" false "$CLEAN_VENDOR"
 
