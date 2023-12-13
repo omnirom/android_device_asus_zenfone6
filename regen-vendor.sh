@@ -521,6 +521,9 @@ VENDOR_SKIP_FILES_COMMON=(
     "lib/libqservice.so"
     "lib64/libqservice.so"
 
+    # Fstab
+    "etc/fstab.qcom"
+
     # Init Scripts
     "bin/init.asus.check_asdf.sh"
     "bin/init.asus.check_last.sh"

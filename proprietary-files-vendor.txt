@@ -358,7 +358,6 @@ vendor/etc/firmware/goodixfp.b07
 vendor/etc/firmware/goodixfp.mbn
 vendor/etc/firmware/goodixfp.mdt
 vendor/etc/flp.conf
-vendor/etc/fstab.qcom
 vendor/etc/gpfspath_oem_config.xml
 vendor/etc/gps.conf
 vendor/etc/graphite_ipc_platform_info.xml
