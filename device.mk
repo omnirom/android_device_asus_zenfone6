@@ -79,6 +79,10 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/recovery,recovery/root) \
     $(call find-copy-subdir-files,*,device/asus/zenfone6/prebuilt/vendor,vendor)
 
+# Sensors
+PRODUCT_PACKAGES += \
+    libbinder_shim
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
