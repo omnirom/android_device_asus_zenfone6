@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1797641_59e30e64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2023-12-17T15:07:18Z",
+      "side": 1,
+      "message": "used as reference \nhttps://github.com/omnirom/android_system_core/blob/android-14.0/init/service_parser.cpp#L544-L552",
+      "revId": "c79cfeec83464007b66a761033a40d715425ed2b",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    }
+  ]
+}
