@@ -1,2 +1,5 @@
+# Laser
+genfscon sysfs /module/stmvl53l1/parameters/netlink_protocol_type                                               u:object_r:sysfs_stmvl53l1_type:s0
+
 # Wakeup
 genfscon sysfs /devices/virtual/diag/diag/wakeup5                                                               u:object_r:sysfs_wakeup:s0
