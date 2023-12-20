@@ -170,6 +170,10 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/mhi_qdss             0660   system    oem_2902
 /sys/class/qdss_bridge/mhi_qdss  mode      0660     system   oem_2902
 
+#Sensors
+/dev/lightsensor          0640  system     system
+/dev/proximity            0640  system     system
+
 #qg
 /dev/qg                   0660  system     system
 /dev/qg_battery           0660  system     system
