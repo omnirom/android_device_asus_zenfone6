@@ -73,7 +73,6 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
-    mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/vendor/nnhal 0700 system system
 
 on early-boot
@@ -82,7 +81,6 @@ on early-boot
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
-    chown system system /sys/kernel/hbtp/display_pwr
     chown system system /sys/kernel/qvr_external_sensor/fd
     start rmt_storage
     start rfs_access

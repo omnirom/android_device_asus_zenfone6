@@ -543,6 +543,18 @@ VENDOR_SKIP_FILES_COMMON=(
     # Fstab
     "etc/fstab.qcom"
 
+    # Hbtp
+    "bin/hbtp_daemon"
+    "etc/hbtp/hbtpcfg_sdm855_801s_4k.dat"
+    "etc/hbtp/loader.cfg"
+    "etc/hbtp/qtc801s.bin"
+    "lib/libhbtpclient.so"
+    "lib/libhbtpdsp.so"
+    "lib/libhbtpfrmwk.so"
+    "lib64/libhbtpclient.so"
+    "lib64/libhbtpdsp.so"
+    "lib64/libhbtpfrmwk.so"
+
     # Init Scripts
     "bin/init.asus.check_asdf.sh"
     "bin/init.asus.check_last.sh"
