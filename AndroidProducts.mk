@@ -3,6 +3,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/omni_zenfone6.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_zenfone6-user \
-    omni_zenfone6-trunk_staging-userdebug \
-    omni_zenfone6-eng
+    omni_zenfone6-ap1a-user \
+    omni_zenfone6-ap1a-userdebug \
+    omni_zenfone6-ap1a-eng
