@@ -37,7 +37,7 @@ DEVICE_MATRIX_FILE += $(DEVICE_PATH)/manifest/compatibility_matrix.xml
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sm8150
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/asus/sm8150
+TARGET_KERNEL_SOURCE := kernel/asus/merge
 TARGET_KERNEL_CONFIG := vendor/zs630kl_defconfig
 
 TARGET_MODULE_ALIASES += \
