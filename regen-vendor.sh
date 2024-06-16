@@ -420,6 +420,12 @@ VENDOR_SKIP_FILES_COMMON=(
     "etc/group"
     "etc/passwd"
 
+    # ConfigStore
+    "bin/hw/android.hardware.configstore@1.1-service"
+    "bin/hw/capabilityconfigstoretest"
+    "etc/init/android.hardware.configstore@1.1-service.rc"
+    "etc/seccomp_policy/configstore@1.1.policy"
+
     # Crypto and Km
     "bin/hw/android.hardware.keymaster@3.0-service-qti"
     "bin/hw/android.hardware.keymaster@4.0-strongbox-service-qti"
