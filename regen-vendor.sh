@@ -727,6 +727,12 @@ VENDOR_SKIP_FILES_COMMON=(
     "overlay/FrameworksResTarget.apk"
     "overlay/WifiResTarget.apk"
 
+    # Power
+    "bin/hw/android.hardware.power@1.2-service"
+    "etc/init/android.hardware.power@1.2-service.rc"
+    "lib/hw/power.default.so"
+    "lib64/hw/power.default.so"
+
     # rfs
     "rfs/apq/gnss/hlos"
     "rfs/apq/gnss/ramdumps"
